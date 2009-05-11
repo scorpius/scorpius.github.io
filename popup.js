@@ -3,42 +3,42 @@
 // === Popup ===
 // =============
 function popup(sPicURL) {
-	window.open("popup.htm?"+sPicURL, "", "resizable=1,height=200,width=200");
+	window.open("popup.htm?"+sPicURL, "", "resizable=1,width=640,height=480");
 }
 
-// var newWindow
-// function popup(jpg_or_htm, w, h) {
-//	   var safari = navigator.userAgent.indexOf('Safari') != -1 ;
-//	   var l, t;
-//	   if (!w || !h) {
-//		   w = 640;
-//		   h = 480;
-//	   }
-//
-//	   if(navigator.appName == "Netscape") {
-//		   w += 20
-//		   h += 20;
-//	   } else {
-//		   w += 38;
-//		   h += 38;
-//	   }
-//	   if (safari) {
-//		   w -= 20;
-//		   h -= 20;
-//	   }
-//
-//	   l = (screen.availWidth-w-10);
-//	   t = 0   //(screen.availHeight-h);
-//	   if (!newWindow || newWindow.closed) {
-//		   newWindow = window.open(jpg_or_htm,"NOTIFY",'left='+l + ',top='+t + ',height='+h + ',width='+w+ ",toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=1,titlebar=0");
-//		   newWindow.focus();
-//	   } else {   // the window is already open, bring it to the front
-//		   newWindow.close();
-//		   newWindow = window.open(jpg_or_htm,"NOTIFY",'left='+l + ',top='+t + ',height='+h + ',width='+w+ ",toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=1,titlebar=0");
-//		   newWindow.focus();
-//	   }
-//	   newWindow.document.bgColor = "#c0c0c0";
-// }
+var newWindow
+function popup2(jpg_or_htm, w, h) {
+	var safari = navigator.userAgent.indexOf('Safari') != -1 ;
+	var l, t;
+	if (!w || !h) {
+		w = 640;
+		h = 480;
+	}
+
+	if(navigator.appName == "Netscape") {
+		w += 20
+		h += 20;
+	} else {
+		w += 38;
+		h += 38;
+	}
+	if (safari) {
+		w -= 20;
+		h -= 20;
+	}
+
+	l = (screen.availWidth-w-10);
+	t = 0	//(screen.availHeight-h);
+	if (!newWindow || newWindow.closed) {
+		newWindow = window.open(jpg_or_htm,"NOTIFY",'left='+l + ',top='+t + ',height='+h + ',width='+w+ ",toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=1,titlebar=0");
+		newWindow.focus();
+	} else {   // the window is already open, bring it to the front
+		newWindow.close();
+		newWindow = window.open(jpg_or_htm,"NOTIFY",'left='+l + ',top='+t + ',height='+h + ',width='+w+ ",toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=1,titlebar=0");
+		newWindow.focus();
+	}
+	newWindow.document.bgColor = "#c0c0c0";
+}
 
 
 // =================
