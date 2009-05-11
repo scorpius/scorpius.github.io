@@ -91,6 +91,140 @@
               <p align="left"
                  class="title">
                Wings3D<br>
+               OpenGL Ambient-Occlusion Generator
+              </p>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="7"
+			   width="500">
+
+         <tr>
+          <td bgcolor="#808080">
+           <table border="0"
+                  cellpadding="9"
+                  cellspacing="1"
+                  width="500"
+                  bgcolor="#808080">
+            <tr>
+             <td valign="top"
+				 bgcolor="#C0C0C0">
+              <p align="left">
+               This plug-in is for generating ambient occlusion via the<a href=
+               "javascript:popup('misc/dogmon-ao-1.jpg')"><img src=
+               "thumb/dogmon-ao-1.gif"
+                    alt="DogMonster"
+                    align="left"
+                    border="0"
+                    hspace="10"
+                    vspace="5"
+                    width="134"
+                    height="110"></a> OpenGL / ESDL combo. It uses
+                    hardware-accelerated OpenGL calls, instead of ray-tracing,
+                    to calculate and set the ambient-occlusion accessibility
+                    factor for each vertex. Makes use of the HemiCube to get
+                    the visibility factor. The screen-shot to the left shows an
+                    object (with edges turned off) and a default grid acting as
+                    a ground-plane. It rendered in 2 seconds on my hardware
+                    (GeForce 7300 GT). Here are some key features and hints for
+                    use:
+              </p>
+
+              <ul>
+               <li>Real Ambient Occlusion, <strong>not</strong> an OpenGL
+               shader
+               </li>
+
+               <li>Works with very old video cards
+               </li>
+
+               <li>Bakes the AO to the object's vertex colors
+               </li>
+
+               <li>Adds an ambient light, and shuts off any other lights
+               </li>
+
+               <li>Materials/hard edges are ignored
+               </li>
+
+               <li>If no objects are seleced, then the whole scene is processed
+               </li>
+
+               <li>All objects in your scene will occlude each other
+               </li>
+              </ul>
+
+              <p align="left"
+                 class="indent">
+               Basically, it works by placing a camera at each vertex, pointing
+               <a href="javascript:popup('misc/dogmon-ao-2.jpg')"><img src=
+               "thumb/dogmon-ao-2.gif"
+                    alt="DogMonster"
+                    align="right"
+                    border="0"
+                    hspace="10"
+                    vspace="5"
+                    width="134"
+                    height="110"></a> it in the same direction as the vertex
+                    normal, rendering a hemicube to an auxiliary framebuffer,
+                    then calculating the occlusion factor by simple addition
+                    and division.<br>
+              </p>
+
+              <p align="left"
+                 class="indent">
+               I'll probably add an option to automatically use an infinite
+               ground plane later on. For now you can just use a grid object,
+               along with <i>Tools-&gt;Put on Ground.</i> The screen-shot to
+               the right shows an object without a ground-plane. Note that it
+               is much brighter because there's nothing underneath to occlude.
+              </p>
+
+              <p align="left"
+                 class="indent">
+               Download <a href=
+               "http://home.comcast.net/~gamma-ray/tmp/wpc_ambocc.zip">wpc_ambocc.zip</a>
+               and unzip it to your plugins/commands directory. Then look for
+               "Ambient Occlusion" in the tools menu.
+              </p>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0"
+               width="500"
+               bgcolor="#000000">
+         <tr>
+          <td>
+           <table border="0"
+                  cellpadding="5"
+                  cellspacing="1"
+                  width="500"
+                  bgcolor="#000000">
+            <tr>
+             <td bgcolor="#A298A9">
+              <p align="left"
+                 class="title">
+               Wings3D<br>
                The Special Edition
               </p>
              </td>
@@ -176,11 +310,16 @@
                  bgcolor="#C0C0C0"
                  width="250">
               <p align="left">
-               <!--
-               <strong>Book Info:</strong> Making icons at 16x16 pixels is a
-               little tricky. There's a very interesting and informative book
-               about the subject: <i>Icon Design</i>, by Steve Caplin.
-               -->
+               <strong>Wings-0.99.54-SE:</strong> Here's another SE preview
+               release that features everything in the current SVN branch. Most
+               notable is the rewrite of the <i>Inset</i> command.<br>
+               Get it now: <a href=
+               "http://home.comcast.net/~hydrospheric/SE/wings-0.99.54-SE.exe">WinXP</a>,
+               <a href=
+               "http://home.comcast.net/~hydrospheric/SE/wings-0.99.54-SE-linux.zip">
+               Linux</a>, <a href=
+               "http://home.comcast.net/~hydrospheric/SE/wings-0.99.54-SE-macosx.zip">
+               MacOSX</a>.
               </p>
              </td>
             </tr>
