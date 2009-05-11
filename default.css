@@ -1,7 +1,6 @@
 body {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
 	color: #000000;
-	/* background-color: #c0c0c0; */
+	//background-color: #aaaaaa;
 }
 
 a:link	  { text-decoration: none; color: #0043C0; }
@@ -17,7 +16,6 @@ span a:hover   { color: #ff6600; background-color: #c0c0c0; }
 th, ul, ol, p {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	font-size-adjust: 0.5;
 	line-height: 18px;
 	text-align: justify;
 }
