@@ -108,7 +108,6 @@
                cellpadding="0"
                cellspacing="7"
 			   width="500">
-
          <tr>
           <td bgcolor="#808080">
            <table border="0"
@@ -120,7 +119,8 @@
              <td valign="top"
 				 bgcolor="#C0C0C0">
               <p align="left">
-               This plug-in is for generating ambient occlusion via the<a href=
+               This plug-in is for generating ambient occlusion via OpenGL. It
+               uses hardware-accelerated <a href=
                "javascript:popup('misc/dogmon-ao-1.jpg')"><img src=
                "thumb/dogmon-ao-1.gif"
                     alt="DogMonster"
@@ -129,15 +129,19 @@
                     hspace="10"
                     vspace="5"
                     width="134"
-                    height="110"></a> OpenGL / ESDL combo. It uses
-                    hardware-accelerated OpenGL calls, instead of ray-tracing,
-                    to calculate and set the ambient-occlusion accessibility
-                    factor for each vertex. Makes use of the HemiCube to get
-                    the visibility factor. The screen-shot to the left shows an
-                    object (with edges turned off) and a default grid acting as
-                    a ground-plane. It rendered in 2 seconds on my hardware
-                    (GeForce 7300 GT). Here are some key features and hints for
-                    use:
+                    height="110"></a>OpenGL calls, instead of ray-tracing, to
+                    calculate and set a per-vertex ambient-occlusion factor. A
+                    HemiCube is used to sample the environment's visibility.
+                    The results are stored in the object's vertex-colors and
+                    can also be baked to a texture through autouv.
+              </p>
+
+              <p align="left"
+                 class="indent">
+               The screen-shot to the left shows an object (with edges turned
+               off) and a default grid acting as a ground-plane. It rendered in
+               2 seconds on my hardware (GeForce 7300 GT). Here are some key
+               features and hints for use:
               </p>
 
               <ul>
@@ -157,17 +161,41 @@
                <li>Materials/hard edges are ignored
                </li>
 
-               <li>If no objects are seleced, then the whole scene is processed
-               </li>
-
-               <li>All objects in your scene will occlude each other
+               <li>All objects in the scene will occlude each other
                </li>
               </ul>
+
+              <p align="left">
+               <strong>How To Bake Ambient-Occlusion to a Texture via
+               AutoUV:</strong>
+              </p>
+
+              <ol>
+               <li>Prepare to uv-map your model by marking seams with hard
+               edges
+               </li>
+
+               <li>Run Tools -&gt; Ambient-Occlusion
+               </li>
+
+               <li>Run AutoUV, and unfold your model again
+               </li>
+
+               <li>Right-click in AutoUV, choose "Create Texture" and
+               </li>
+
+               <li>Set Draw Faces to Use (previous) Texture/Vertex colors
+               </li>
+
+               <li>Delete the Draw Edges pass or set it to None
+               </li>
+              </ol>
 
               <p align="left"
                  class="indent">
                Basically, it works by placing a camera at each vertex, pointing
-               <a href="javascript:popup('misc/dogmon-ao-2.jpg')"><img src=
+               it in the same direction as the vertex <a href=
+               "javascript:popup('misc/dogmon-ao-2.jpg')"><img src=
                "thumb/dogmon-ao-2.gif"
                     alt="DogMonster"
                     align="right"
@@ -175,10 +203,9 @@
                     hspace="10"
                     vspace="5"
                     width="134"
-                    height="110"></a> it in the same direction as the vertex
-                    normal, rendering a hemicube to an auxiliary framebuffer,
-                    then calculating the occlusion factor by simple addition
-                    and division.<br>
+                    height="110"></a> normal, rendering a hemicube to an
+                    auxiliary framebuffer, then calculating the occlusion
+                    factor by simple addition and division.<br>
               </p>
 
               <p align="left"
@@ -187,7 +214,8 @@
                ground plane later on. For now you can just use a grid object,
                along with <i>Tools-&gt;Put on Ground.</i> The screen-shot to
                the right shows an object without a ground-plane. Note that it
-               is much brighter because there's nothing underneath to occlude.
+               is much brighter because there's nothing underneath the object
+               to occlude.
               </p>
 
               <p align="left"
@@ -196,13 +224,10 @@
                "http://home.comcast.net/~gamma-ray/tmp/wpc_ambocc.zip">wpc_ambocc.zip</a>
                and unzip it to your plugins/commands directory. Then look for
                "Ambient Occlusion" in the tools menu. Wings 1.1 users must use
-               this version:
-               <a href=
-               "http://home.comcast.net/~gamma-ray/tmp/wpc_ambocc-1.1.zip">
-               wpc_ambocc-1.1.zip</a>. For baking AO, there is also a
-               bug fix for AutoUV: <a href=
-               "http://home.comcast.net/~gamma-ray/tmp/auv_texture.zip">
-               auv_texture.zip</a>.
+               this version: <a href=
+               "http://home.comcast.net/~gamma-ray/tmp/wpc_ambocc-1.1.zip">wpc_ambocc-1.1.zip</a>.
+               For baking AO, there is also a bug fix for AutoUV: <a href=
+               "http://home.comcast.net/~gamma-ray/tmp/auv_texture.zip">auv_texture.zip</a>.
               </p>
              </td>
             </tr>
