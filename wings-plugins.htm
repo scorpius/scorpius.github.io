@@ -56,7 +56,10 @@
                 value="high">
             <param name="bgcolor"
                 value="#c0c0c0">
-            <embed name="menu"
+            <param name="wmode"
+                value="transparent">
+            embed name="menu"
+                wmode="transparent"
                 src="misc/menu.swf"
                 quality="high"
                 bgcolor="#C0C0C0"
@@ -65,6 +68,8 @@
                 type="application/x-shockwave-flash"
                 pluginspage=
                 "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                <param name="wmode"
+                value="transparent">
            </object> <!--webbot bot="HTMLMarkup" endspan -->
           </td>
          </tr>
@@ -120,8 +125,9 @@
 				 bgcolor="#C0C0C0">
               <p align="left">
                This plug-in is for generating ambient occlusion via OpenGL. It
-               uses hardware-accelerated <a href=
-               "javascript:popup('misc/dogmon-ao-1.jpg')"><img src=
+               uses hardware-accelerated <a href="misc/dogmon-ao-1.jpg"
+                  class="highslide"
+                  onclick="return hs.expand(this)"><img src=
                "thumb/dogmon-ao-1.gif"
                     alt="DogMonster"
                     align="left"
@@ -195,7 +201,9 @@
                  class="indent">
                Basically, it works by placing a camera at each vertex, pointing
                it in the same direction as the vertex <a href=
-               "javascript:popup('misc/dogmon-ao-2.jpg')"><img src=
+               "misc/dogmon-ao-2.jpg"
+                  class="highslide"
+                  onclick="return hs.expand(this)"><img src=
                "thumb/dogmon-ao-2.gif"
                     alt="DogMonster"
                     align="right"
@@ -217,7 +225,6 @@
                is much brighter because there's nothing underneath the object
                to occlude.
               </p>
-
               <!--
               <p align="left"
                  class="indent">
@@ -414,8 +421,10 @@
               <p align="left">
                <strong>Blue Cube:</strong> My first icon theme pack that
                features a slightly bluish cast. Check out the <a href=
-               "javascript:popup('misc/Blue-Line-Icons.gif',1004,644)">Screen
-               Shot.</a> To install, download and put this <a href=
+               "misc/Blue-Line-Icons.gif"
+                  class="highslide"
+                  onclick="return hs.expand(this)">Screen Shot.</a> To install,
+                  download and put this <a href=
                   "misc/wings_icon.bundle">bundle</a> in your wings\ebin
                   directory.
               </p>
@@ -686,7 +695,10 @@
                 value="high">
              <param name="bgcolor"
                 value="#C0C0C0">
-             <embed name="spyder"
+             <param name="wmode"
+                value="transparent">
+            embed name="spyder"
+                wmode="transparent"
                 src="misc/spyder.swf"
                 quality="high"
                 bgcolor="#C0C0C0"
@@ -695,6 +707,8 @@
                 type="application/x-shockwave-flash"
                 pluginspage=
                 "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                <param name="wmode"
+                value="transparent">
             </object>
            </p>
           </td>
@@ -705,8 +719,10 @@
 
       <p align="left">
   <script language="JavaScript"
-          src="popup.js"
+          src="highslide/highslide.js"
           type="text/javascript">
+</script><script type="text/javascript">
+hs.outlineType = 'rounded-white'; hs.creditsText = ''; hs.dimmingOpacity = 0.75;
        </script>
       </p>
      </td>

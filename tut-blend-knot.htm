@@ -56,7 +56,10 @@
                 value="high">
             <param name="bgcolor"
                 value="#c0c0c0">
-            <embed name="menu"
+            <param name="wmode"
+                value="transparent">
+            embed name="menu"
+                wmode="transparent"
                 src="misc/menu.swf"
                 quality="high"
                 bgcolor="#C0C0C0"
@@ -65,6 +68,8 @@
                 type="application/x-shockwave-flash"
                 pluginspage=
                 "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                <param name="wmode"
+                value="transparent">
            </object> <!--webbot bot="HTMLMarkup" endspan -->
           </td>
          </tr>
@@ -130,10 +135,14 @@
             A torus knot is simply a special type of torus that has a
             distinctive "twisted" or "knotted" appearance. Do you remember the
             chrome logo of a company called MetaCreations? Here's my <a href=
-            "javascript:popup('misc/tut-blend-knot-meta.jpg')">version</a>
-            created in Blender. For a more concrete example see my <a href=
-            "javascript:popup('large/torusknot1.jpg')">model</a> of a garden
-            hose knot. Carefully, follow the easy steps below to recreate my
+            "misc/tut-blend-knot-meta.jpg"
+               class="highslide"
+               onclick="return hs.expand(this)">version</a> created in Blender.
+               For a more concrete example see my <a href=
+               "large/torusknot1.jpg"
+               class="highslide"
+               onclick="return hs.expand(this)">model</a> of a garden hose
+               knot. Carefully, follow the easy steps below to recreate my
                model.
            </p>
            <br>
@@ -157,7 +166,9 @@
             equilateral triangle. Select all three, duplicate (SHIFT-D), rotate
             (R-Key) 60 degrees, and scale (S-Key) by a factor of 0.550 You
             should have six empties arranged like <a href=
-            "javascript:popup('misc/tut-blend-knot.png',570,495)">this</a>.
+            "misc/tut-blend-knot.png"
+                 class="highslide"
+                 onclick="return hs.expand(this)">this</a>.
             </li>
 
             <li>Add a <i>NURBS Curve</i> and remain in edit mode (yellow lines
@@ -274,7 +285,10 @@
                 value="high">
              <param name="bgcolor"
                 value="#C0C0C0">
-             <embed name="spyder"
+             <param name="wmode"
+                value="transparent">
+            embed name="spyder"
+                wmode="transparent"
                 src="misc/spyder.swf"
                 quality="high"
                 bgcolor="#C0C0C0"
@@ -283,6 +297,8 @@
                 type="application/x-shockwave-flash"
                 pluginspage=
                 "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                <param name="wmode"
+                value="transparent">
             </object>
            </p>
           </td>
@@ -293,8 +309,10 @@
 
       <p align="left">
   <script language="JavaScript"
-          src="popup.js"
+          src="highslide/highslide.js"
           type="text/javascript">
+</script><script type="text/javascript">
+hs.outlineType = 'rounded-white'; hs.creditsText = ''; hs.dimmingOpacity = 0.75;
        </script>
       </p>
      </td>

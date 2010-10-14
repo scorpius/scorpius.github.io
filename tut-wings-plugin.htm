@@ -56,7 +56,10 @@
                 value="high">
             <param name="bgcolor"
                 value="#c0c0c0">
-            <embed name="menu"
+            <param name="wmode"
+                value="transparent">
+            embed name="menu"
+                wmode="transparent"
                 src="misc/menu.swf"
                 quality="high"
                 bgcolor="#C0C0C0"
@@ -65,6 +68,8 @@
                 type="application/x-shockwave-flash"
                 pluginspage=
                 "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                <param name="wmode"
+                value="transparent">
            </object> <!--webbot bot="HTMLMarkup" endspan -->
           </td>
          </tr>
@@ -596,15 +601,16 @@
 
            <p align="left"
               class="indent">
-            <a href=
-            "javascript:popup('misc/tut-wings-plugin-figure-1.gif',490,334)">Figure
-            1</a> illustrates how the plane object would appear in the geometry
-            window. The vertex indices are denoted in light blue; the face
-            indices in light red. The concept of counter-clockwise vertex order
-            should now be quite apparent. Note: The code fragment above
-            produces an invalid mesh and will crash in current versions of
-            Wings. The reason is that only one edge is shared by two faces, the
-            other 6 edges are open.
+            <a href="misc/tut-wings-plugin-figure-1.gif"
+               class="highslide"
+               onclick="return hs.expand(this)">Figure 1</a> illustrates how
+               the plane object would appear in the geometry window. The vertex
+               indices are denoted in light blue; the face indices in light
+               red. The concept of counter-clockwise vertex order should now be
+               quite apparent. Note: The code fragment above produces an
+               invalid mesh and will crash in current versions of Wings. The
+               reason is that only one edge is shared by two faces, the other 6
+               edges are open.
            </p>
 
            <h3>
@@ -653,14 +659,17 @@
             Erlang easier to read. I highly recommend the <a href=
             "http://www.geocities.com/jadoxa/tde/"
                target="_blank">Thomson-Davis Editor</a>; here's a <a href=
-               "javascript:popup('misc/tde-syntax-highlighting.gif',802,902)">screenshot</a>.
-               For more about Erlang, read the tutorial by <a href=
-			   tut-earlyriser.htm
+               "misc/tde-syntax-highlighting.gif"
+               class="highslide"
+               onclick="return hs.expand(this)">screenshot</a>. For more about
+               Erlang, read the tutorial by <a href="tut-earlyriser.htm"
                target="_blank">Sean Hinde</a>. Click on the INFO link at the
                top of this page and check out the source of my plugins. And
                don't keep an eye out for my upcoming book: <a href=
-               "javascript:popup('misc/Inside-Wings3D-Plugins.gif',500,600)"><em>Inside
-               Wings3D Plugins: A Developer's Guide.</em></a>
+               "misc/Inside-Wings3D-Plugins.gif"
+               class="highslide"
+               onclick="return hs.expand(this)"><em>Inside Wings3D Plugins: A
+               Developer's Guide.</em></a>
            </p>
 
            <h3>
@@ -710,7 +719,10 @@
                 value="high">
              <param name="bgcolor"
                 value="#C0C0C0">
-             <embed name="spyder"
+             <param name="wmode"
+                value="transparent">
+            embed name="spyder"
+                wmode="transparent"
                 src="misc/spyder.swf"
                 quality="high"
                 bgcolor="#C0C0C0"
@@ -719,6 +731,8 @@
                 type="application/x-shockwave-flash"
                 pluginspage=
                 "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                <param name="wmode"
+                value="transparent">
             </object>
            </p>
           </td>
@@ -729,8 +743,10 @@
 
       <p align="left">
   <script language="JavaScript"
-          src="popup.js"
+          src="highslide/highslide.js"
           type="text/javascript">
+</script><script type="text/javascript">
+hs.outlineType = 'rounded-white'; hs.creditsText = ''; hs.dimmingOpacity = 0.75;
        </script>
       </p>
      </td>

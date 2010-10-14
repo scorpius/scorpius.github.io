@@ -56,7 +56,10 @@
                 value="high">
             <param name="bgcolor"
                 value="#c0c0c0">
-            <embed name="menu"
+            <param name="wmode"
+                value="transparent">
+            embed name="menu"
+                wmode="transparent"
                 src="misc/menu.swf"
                 quality="high"
                 bgcolor="#C0C0C0"
@@ -65,6 +68,8 @@
                 type="application/x-shockwave-flash"
                 pluginspage=
                 "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                <param name="wmode"
+                value="transparent">
            </object> <!--webbot bot="HTMLMarkup" endspan -->
           </td>
          </tr>
@@ -113,8 +118,9 @@
           <td width="500"
               bgcolor="#C0C0C0">
            <p align="left">
-            To the right is a <a href=
-            "javascript:popup('large/bmrt-golfballs.jpg','GB')"><img src=
+            To the right is a <a href="large/bmrt-golfballs.jpg"
+               class="highslide"
+               onclick="return hs.expand(this)"><img src=
                "thumb/bmrt-golfballs.gif"
                  alt="A BMRT Rendering of 3 Golf Balls"
                  align="right"
@@ -152,7 +158,9 @@
            <p align="left">
             Here is a scene of a very nice basket ball against a cool blue
             background, which I created with the GIMP. <a href=
-            "javascript:popup('large/bmrt-basketball.jpg',800,600)"><img src=
+            "large/bmrt-basketball.jpg"
+               class="highslide"
+               onclick="return hs.expand(this)"><img src=
                "thumb/bmrt-basketball.gif"
                  alt="A BMRT Rendering of a Basket Ball"
                  align="left"
@@ -189,8 +197,9 @@
           <td width="500"
               bgcolor="#C0C0C0">
            <p align="left">
-            I finally finished <a href=
-            "javascript:popup('large/bmrt-soccer.jpg',800,600)"><img src=
+            I finally finished <a href="large/bmrt-soccer.jpg"
+               class="highslide"
+               onclick="return hs.expand(this)"><img src=
                "thumb/bmrt-soccer.gif"
                  alt="A BMRT Rendering of a Soccer Ball"
                  align="right"
@@ -241,7 +250,10 @@
                 value="high">
              <param name="bgcolor"
                 value="#C0C0C0">
-             <embed name="spyder"
+             <param name="wmode"
+                value="transparent">
+            embed name="spyder"
+                wmode="transparent"
                 src="misc/spyder.swf"
                 quality="high"
                 bgcolor="#C0C0C0"
@@ -250,6 +262,8 @@
                 type="application/x-shockwave-flash"
                 pluginspage=
                 "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+                <param name="wmode"
+                value="transparent">
             </object>
            </p>
           </td>
@@ -258,8 +272,10 @@
        </center>
       </div>
   <script language="JavaScript"
-          src="popup.js"
+          src="highslide/highslide.js"
           type="text/javascript">
+</script><script type="text/javascript">
+hs.outlineType = 'rounded-white'; hs.creditsText = ''; hs.dimmingOpacity = 0.75;
       </script>
      </td>
     </tr>
