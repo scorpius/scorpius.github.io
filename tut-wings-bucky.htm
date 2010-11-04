@@ -1,0 +1,268 @@
+<html>
+ <head>
+  <meta name="generator"
+        content=
+        "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=us-ascii">
+  <meta name="description"
+        content=
+        "This is the home of the finest collection of ray-traced puzzles rendered with POV-Ray. You will see photo-realistic images of chinese throwing stars, telescopes, and golf balls . Also includes Rubik's Cube, The Snake Cube, Rubik's Revenge, The Pyraminx, The Tangram, and other related puzzles. Thumbnails allow quick previews. No modellers were used. Also has some BMRT images.">
+  <meta name="distribution"
+        content="global">
+  <meta http-equiv="Page-Enter"
+        content="blendTrans(Duration=0.6)">
+  <title>
+   Wings3D Bucky Ball Tutorial
+  </title>
+  <link rel="stylesheet"
+        href="default.css"
+        type="text/css">
+  <link rel="shortcut icon"
+        href="favicon.ico"
+        type="image/x-icon">
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+ </head>
+ <body bgcolor="#AAAAAA"
+       topmargin="8"
+       leftmargin="8">
+  <div align="center">
+   <table border="0"
+          cellpadding="5"
+          cellspacing="1"
+          width="550"
+          bgcolor="#000000">
+    <tr>
+     <td bgcolor="#C0C0C0">
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0">
+         <tr>
+          <td>
+           <!--webbot bot="HTMLMarkup" startspan -->
+           <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="menu"
+               width="540"
+               height="60">
+            <param name="movie"
+                value="misc/menu.swf">
+            <param name="quality"
+                value="high">
+            <param name="bgcolor"
+                value="#c0c0c0">
+            <embed name="menu"
+                src="misc/menu.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="540"
+                height="60"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+           </object> <!--webbot bot="HTMLMarkup" endspan -->
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0"
+               width="500"
+               bgcolor="#000000">
+         <tr>
+          <td>
+           <table border="0"
+                  cellpadding="5"
+                  cellspacing="1"
+                  width="500"
+                  bgcolor="#000000">
+            <tr>
+             <td bgcolor="#A298A9">
+              <p align="left"
+                 class="title">
+               Wings3D Bucky Ball Tutorial<br>
+               (Requires GeoDome Plugin)
+              </p>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            This tutorial is for those who are interested in geodesic
+            structures. It is easy to follow and is well suited for beginners
+            who want to try their hand at simple geometric modeling.
+           </p>
+
+           <p align="left"
+              class="indent">
+            A bucky ball is a polyhedron that always has 12 pentagons, and 20
+            or more hexagons. For a more concrete example, a soccer ball can be
+            classified as a frequency three bucky ball. My <a href=
+            "javascript:popup('large/sphere2.jpg')">model</a> of the time
+            travel device from the TV series <em>Seven Days</em> is also based
+            on this form.
+           </p>
+
+           <p align="left"
+              class="indent">
+            This tutorial requires an external plugin, which can be found on my
+            <a href="wings-plugins.htm">plugins</a> page or <a href=
+            "scripts/Wings3D-Plugins.zip">Wings3D-Plugins.zip</a>. Follow the
+            easy steps below to model a bucky ball (v0.98.20b)
+           </p>
+           <br>
+
+           <ol>
+            <li>Create a geodome. This primitive can be found under
+            <em>More</em> in the object creation menu. Make sure to click on
+            the option box and enter the values shown in this <a href=
+            "javascript:popup('misc/tut-wings-bucky.gif',993,618)">image</a>.
+            Keep in mind that bucky balls can only be created from
+            icosahedron-based domes with frequencies that are divisible by
+            three. So make sure to select a resolution of 3, 6, 9, 12, etc. in
+            the Resolution box. Use <strong>6</strong> for this example.
+            </li>
+
+            <li>Create 12 pentagons. Select the vertices (12 in total) at the
+            center of each pentagon. If you are having trouble visualizing
+            this, choose
+            <em><strong>Select&gt;By&gt;Vertices&nbsp;With&gt;5&nbsp;edges</strong></em>
+            from the <em>Select</em> menu. Now simply delete or collapse them.
+            </li>
+
+            <li>Now we need to select and delete the vertices at the center of
+            each hexagon. Since there are 110 of them, you may think that a lot
+            of tedious mouse clicking needs to be done. Here's where Wings3D's
+            powerful range of selection tools&#8212;especially
+            <em><strong>Select&gt;Similar</strong></em>&#8212;comes into play.
+            </li>
+
+            <li>Create 60 hexagons. Select one vertex directly across from an
+            edge of any pentagon. Then press 'I' to automatically select 60
+            verts. Now delete them. If you did this correctly, you should start
+            to see the basic shape: 12 pentagons, each one surrounded by 6
+            hexagons.
+            </li>
+
+            <li>Create 30 hexagons. Select one vertex that is exactly halfway
+            between any two pentagons. Then press 'I' and the readout should
+            state "30 vertices selected." Refer to the screen shot in step 1.
+            Delete these and we're almost done.
+            </li>
+
+            <li>Create 20 hexagons. Select any vertex that has 6 edges
+            emanating from it (there's no menu option available for this
+            selection), press 'I' to select all 20 similar verts, then delete
+            or collapse them.
+            </li>
+           </ol>
+
+           <p align="left"
+              class="indent">
+            So now you have a frequency 6 bucky ball. At this point, you can
+            select and triangulate or quadrangulate all faces to see some
+            interesting patterns emerge. You can also select similar faces,
+            edges, or verts and apply vertex colors. And just for practice, you
+            should try to make a high resolution ball by using a higher
+            frequency. I've gone as high as 18.
+           </p>
+
+           <p align="left"
+              class="indent">
+            An alternate method exists that allows for any frequency. First,
+            disable the <i>Spherize</i> option. Then bevel all edges to the
+            maximum extent and inflate all verts to 100%.
+           </p>
+
+           <p align="left"
+              class="indent">
+            If you found this useful, I would appreciate any comments or
+            suggestions. And let me know if there are any errors or omissions.
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="center"
+              class="center">
+            This page was last revised on March 6, 2004<br>
+            Copyright <!--webbot bot="HTMLMarkup" startspan -->&#169; 
+            <!--webbot bot="HTMLMarkup" endspan --> 2004 Anthony D'Agostino<br>
+            All rights reserved.<br>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="spyder"
+               width="45"
+               height="26">
+             <param name="movie"
+                value="misc/spyder.swf">
+             <param name="quality"
+                value="high">
+             <param name="bgcolor"
+                value="#C0C0C0">
+             <embed name="spyder"
+                src="misc/spyder.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="45"
+                height="26"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+            </object>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <p align="left">
+  <script language="JavaScript"
+          src="popup.js"
+          type="text/javascript">
+       </script>
+      </p>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,95 @@
+
+C:\UTIL32\MS.EXE -- MPEG Analyzer for MPEG I video streams (version 2.2b)
+
+Reading 3puzzles.mpg
+
+Picture coding types (bitstream order / display order):
+IPBBPBBPBB / IBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBB / BBIBBP
+
+SUMMARY:
+
+Total Bytes read: 2000371. Total number of frames: 400.  Length is 16.00 sec
+
+Width: 320	Height: 240
+Avg. Frame Size: 4997 bytes + 4 bits  (average rate 999513.50 bits/sec)
+
+Total Compression Rate:  2.17 % of uncompressed 24 bit images
+                        =  0.52 bits per pixel
+
+Number of Macroblocks [width * height = sum]: 20 x 15 = 300 per frame
+Skipped Macroblocks = 1286 (1.08%), Coded Macroblocks = 117547 (98.92%)
+	Coded blocks: 37.53%	[ 20.10  20.14  19.72  19.59  8.43  12.02 ]
+
+MPEG-Viewer requirements:
+	Pixel aspect ratio of 1 (VGA)
+	Required display speed: 25 frames/sec
+	Specified bit rate is 1.00 MBits/sec (2500 * 400bits/sec)
+	Requested buffer size is 20K ints (16 bits/int).
+	And the constrained parameter flag is on.
+	The stream meets the constrained parameter requirements.
+
+Length of vectors in half pixels:
+	Horizontal forward vectors, maximum :  23	average:   6
+	Vertical forward vectors, maximum   :  23	average:   2
+
+	Horizontal backward vectors, maximum:  15	average:   5
+	Vertical backward vectors, maximum  :  15	average:   1
+
+
+Frame specific information:
+
+    34  I FRAMES, average is:
+	Size: 11995 bytes + 7 bits (20.40%)
+	Compression Rate:  5.21%
+	Q Factor [scales quantization matrix]: 4.90
+
+    100 P FRAMES, average is:
+	Size: 8048 bytes + 6 bits (40.26%)
+	Compression Rate:  3.49%
+	Q Factor [scales quantization matrix]: 4.90
+
+    266 B FRAMES, average is:
+	Size: 2955 bytes + 7 bits (39.33%)
+	Compression Rate:  1.28%
+	Q Factor [scales quantization matrix]: 6.69
+	68.74% interpolated Macro Blocks
+
+	User Data Specified (at sequence level):
+43 6f 70 79 72 69 67 68 74 20 32 30 30 30 20 41 	Copyright 2000 A
+6e 74 68 6f 6e 79 20 43 2e 20 44 27 41 67 6f 73 	nthony C. D'Agos
+74 69 6e 6f 20 28 73 63 6f 72 70 69 75 73 40 63 	tino (scorpius@c
+73 69 2e 63 6f 6d 29 20 6d 70 65 67 32 65 6e 63 	si.com) mpeg2enc
+6f 64 65 20 56 31 2e 32  a                      	ode V1.2.       

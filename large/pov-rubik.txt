@@ -1,0 +1,98 @@
+
+C:\UTIL32\MS.EXE -- MPEG Analyzer for MPEG I video streams (version 2.2b)
+
+Reading rubik.mpg
+
+Picture coding types (bitstream order / display order):
+IPBBPBBPBB / IBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IBBPBBPBBPBB / BBIBBPBBPBBP
+IB / BI
+
+SUMMARY:
+
+Total Bytes read: 741406. Total number of frames: 480.  Length is 19.20 sec
+
+Width: 320	Height: 240
+Avg. Frame Size: 1541 bytes + 3 bits  (average rate 308286.04 bits/sec)
+
+Total Compression Rate:  0.67 % of uncompressed 24 bit images
+                        =  0.16 bits per pixel
+
+Number of Macroblocks [width * height = sum]: 20 x 15 = 300 per frame
+Skipped Macroblocks = 95097 (70.50%), Coded Macroblocks = 39794 (29.50%)
+	Coded blocks: 23.77%	[ 17.99  17.85  18.37  17.91  15.79  12.10 ]
+
+MPEG-Viewer requirements:
+	Pixel aspect ratio of 1 (VGA)
+	Required display speed: 25 frames/sec
+	Specified bit rate is variable
+	Requested buffer size is 20K ints (16 bits/int).
+	And the constrained parameter flag is on.
+	The stream does not meet the constrained parameter requirements,
+	due to the following factors:
+		Bit rate is variable.
+
+Length of vectors in half pixels:
+	Horizontal forward vectors, maximum :  31	average:   5
+	Vertical forward vectors, maximum   :  31	average:   5
+
+	Horizontal backward vectors, maximum:  31	average:   4
+	Vertical backward vectors, maximum  :  31	average:   4
+
+
+Frame specific information:
+
+    41  I FRAMES, average is:
+	Size: 6798 bytes + 4 bits (37.67%)
+	Compression Rate:  2.95%
+	Q Factor [scales quantization matrix]: 4.00
+
+    120 P FRAMES, average is:
+	Size: 2234 bytes + 0 bits (36.23%)
+	Compression Rate:  0.97%
+	Q Factor [scales quantization matrix]: 4.00
+
+    319 B FRAMES, average is:
+	Size: 605 bytes + 1 bits (26.09%)
+	Compression Rate:  0.26%
+	Q Factor [scales quantization matrix]: 8.00
+	39.70% interpolated Macro Blocks
+

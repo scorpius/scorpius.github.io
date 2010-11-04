@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta name="generator"
+        content=
+        "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=us-ascii">
+  <meta http-equiv="Page-Enter"
+        content="blendTrans(Duration=0.6)">
+  <title>
+   Mpeg-1 for Dummies
+  </title>
+  <link rel="stylesheet"
+        href="default.css"
+        type="text/css">
+  <link rel="shortcut icon"
+        href="favicon.ico"
+        type="image/x-icon">
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+ </head>
+ <body bgcolor="#C0C0C0">
+  <p align="left">
+   <strong>Mpeg-1 for Dummies</strong><br>
+   January 22, 2001<br>
+   <br>
+   <strong>Bitrate</strong><br>
+   Increasing the bitrate gives higher quality and bigger file size. In other
+   words, it is directly proportional to both the file size and quality.
+   Example:<br>
+   Your animation has 400 frames and you want to encode at 25fps. A bitrate of
+   1,000,000 bits/sec will produce a 2,000,000 byte file (excluding the header,
+   packets, and other chunks of junk).<br>
+   400frames/25fps = 16 seconds<br>
+   1,000,000 bits/sec = 125,000 bytes/sec<br>
+   16 seconds x 125,000 bytes/sec = 2,000,000 byte mpeg file (~1.9MB).<br>
+   <strong><br>
+   Frame rate<br></strong>Decreasing the frame rate will increase the file size
+   (inversely proportional) and will have no effect on quality. The minimum
+   should be 24 fps, to avoid flickering.<br>
+   <strong><br>
+   GOP sequence (IPB)<br></strong>Increasing the I frames in the GOP will
+   increase quality and file size. Increasing P and B frames will do the
+   opposite. I frames are like keyframes; P and B frames depend on them in
+   order to be decoded. I frames are compressed/degraded the least and since P
+   and B are derived from I frames, they are degraded to a greater extent.<br>
+   <br>
+   I'm not an mpeg-encoding expert and some of this info may contain errors. If
+   you have corrections or any other tips, let me know. A good free mpeg
+   encoder: <a href="http://www.tmpgenc.com">tmpgenc</a>.
+  </p>
+ </body>
+</html>

@@ -1,0 +1,305 @@
+<html>
+ <head>
+  <meta name="generator"
+        content=
+        "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=us-ascii">
+  <meta name="description"
+        content=
+        "This is the home of the finest collection of ray-traced puzzles rendered with POV-Ray. You will see photo-realistic images of chinese throwing stars, telescopes, and golf balls . Also includes Rubik's Cube, The Snake Cube, Rubik's Revenge, The Pyraminx, The Tangram, and other related puzzles. Thumbnails allow quick previews. No modellers were used. Also has some BMRT images.">
+  <meta name="distribution"
+        content="global">
+  <meta http-equiv="Page-Enter"
+        content="blendTrans(Duration=0.6)">
+  <title>
+   Blender Torus Knot Tutorial
+  </title>
+  <link rel="stylesheet"
+        href="default.css"
+        type="text/css">
+  <link rel="shortcut icon"
+        href="favicon.ico"
+        type="image/x-icon">
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+ </head>
+ <body bgcolor="#AAAAAA"
+       topmargin="8"
+       leftmargin="8">
+  <div align="center">
+   <table border="0"
+          cellpadding="5"
+          cellspacing="1"
+          width="550"
+          bgcolor="#000000">
+    <tr>
+     <td bgcolor="#C0C0C0">
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0">
+         <tr>
+          <td>
+           <!--webbot bot="HTMLMarkup" startspan -->
+           <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="menu"
+               width="540"
+               height="60">
+            <param name="movie"
+                value="misc/menu.swf">
+            <param name="quality"
+                value="high">
+            <param name="bgcolor"
+                value="#c0c0c0">
+            <embed name="menu"
+                src="misc/menu.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="540"
+                height="60"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+           </object> <!--webbot bot="HTMLMarkup" endspan -->
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0"
+               width="500"
+               bgcolor="#000000">
+         <tr>
+          <td>
+           <table border="0"
+                  cellpadding="5"
+                  cellspacing="1"
+                  width="500"
+                  bgcolor="#000000">
+            <tr>
+             <td bgcolor="#A298A9">
+              <p align="left"
+                 class="title">
+               Blender Torus Knot Tutorial:<br>
+               NURBS Curve Editing
+              </p>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            This tutorial is for those who are interested in curved structures.
+            It is easy to follow and is well suited for beginners who want to
+            try their hand at simple NURBS curve editing.
+           </p>
+
+           <p align="left"
+              class="indent">
+            Blender is a very powerful and precise polygon modeler, complete
+            with NURBS support for creating smooth and curvy objects, such as
+            boat hulls, concept cars, and torus knots.
+           </p>
+
+           <p align="left"
+              class="indent">
+            A torus knot is simply a special type of torus that has a
+            distinctive "twisted" or "knotted" appearance. Do you remember the
+            chrome logo of a company called MetaCreations? Here's my <a href=
+            "javascript:popup('misc/tut-blend-knot-meta.jpg')">version</a>
+            created in Blender. For a more concrete example see my <a href=
+            "javascript:popup('large/torusknot1.jpg')">model</a> of a garden
+            hose knot. Carefully, follow the easy steps below to recreate my
+               model.
+           </p>
+           <br>
+
+           <ol>
+            <li>Start by clearing the workspace (CTRL-X), select top-view (Pad7
+            Key), select rotate-around-cursor-mode (Period Key), and place the
+            cursor at the origin (SHIFT-C). Hint: hold the CTRL and/or SHIFT
+            keys while moving, rotating, and scaling to enable snapping to
+            grid.
+            </li>
+
+            <li>Emptys are very helpful place-holders that will make things
+            much easier for this tutorial. Add an <i>Empty</i> and move (GKey)
+            it 3 units to the left. Press the N-Key to verify the Empty's
+            coordinates at {-3,0,0}. Now duplicate it (SHIFT-D) and rotate
+            (RKey) it 120 degrees. Repeat once more to place the third Empty.
+            </li>
+
+            <li>You should now have three Emptys that form a perfect
+            equilateral triangle. Select all three, duplicate (SHIFT-D), rotate
+            (R-Key) 60 degrees, and scale (S-Key) by a factor of 0.550 You
+            should have six empties arranged like <a href=
+            "javascript:popup('misc/tut-blend-knot.png',570,495)">this</a>.
+            </li>
+
+            <li>Add a <i>NURBS Curve</i> and remain in edit mode (yellow lines
+            should be connecting the vertices.) Delete the three right most
+            vertices, and move the remaining vertex near the left-most Empty
+            (don't be too precise for now). You have now placed the first
+            vertex of the knot, which will have 9 vertices in total.
+            </li>
+
+            <li>Now add the remaining vertices by holding down the CTRL key,
+            while clicking near the numbers 2 through 9 (refer to the above
+            figure.) After the last vertex close the curve by pressing the
+            CKey. Leave edit mode, press F9 and rename this curve 'Torus Knot'
+            (also make sure the 3D Toggle Button under 'DefaultResolU' is
+            pushed in.)
+            </li>
+
+            <li>Add a <i>Hook</i> to vertices 2, 5, and 8 as follows: select
+            them, press CTRL-H, and select the first pop-up menu option. A new
+            null object (Empty.006) will be created. This will be used later to
+            reselect these vertices with great ease. In the same fashion, add
+            another hook to vertices 3, 6, and 9 (Empty.007).
+            </li>
+
+            <li>Make the curve more accurate by snapping the vertices to the
+            nearest emptys. Select the left-most empty (at location -3,0,0),
+            and snap the cursor to it by pressing SHIFT-S, 4. Select the curve,
+            enter edit mode (TAB), select the vertex closest to the 3D cursor,
+            and snap it to the cursor (SHIFT-S, 2), then leave edit mode.
+            Repeat this for all other vertices to get a purely-balanced and
+            symmetrical curve.
+            </li>
+
+            <li>Extend the curve into the third dimension. Select the
+            <i>Hook</i> that is associated with the first three inner vertices
+            (Empty.006) and move it so the Z coordinate is 1.2. Do the same
+            with the other hook (Empty.007), but the Z value should be -1.2
+            instead. Select only the 6 inner-most vertices and set the weight
+            to 1.350 (click on 'Set Weight' in the <i>Curve Tools</i> panel and
+            the curve will be rounder).
+            </li>
+
+            <li>The infinitely thin torus-knot curve needs to be given real
+            volume. Add a bezier circle to the scene and rename it "X" for
+            cross section. Scale it down by half. Select the Knot curve; in the
+            <i>Curve and Surface</i> panel type "X" in the <i>BevOb</i> field.
+            This extrudes the circle along the path of the knot and
+            simultaneously generates the correct UV coordinates (press <i>UV
+            Orco</i>). You may want to experiment with the <i>TaperOb</i> field
+            to create lumps along the length of the main curve.
+            </li>
+
+            <li>One last picky detail: When you press render, Blender
+            internally polygonizes this surface. You'll notice that the
+            generated faces are long and thin instead of square. This can be
+            fixed by increasing the knot curve's 'DefaultResolU' until the
+            faces are square. Press ALT-C to convert the object to a mesh for
+            exporting to other apps, but the UV mapping coordinates will be
+            lost.
+            </li>
+           </ol>
+
+           <p align="left"
+              class="indent">
+            So now you a perfectly-shaped torus knot that awaits texturing or
+            placement in your scene. There are easier ways to make a torus
+            knot, but this is basically the only way to do it by hand via NURBS
+            surfaces. For another method, see my minimal torus knot plugin for
+            Wings.
+           </p>
+
+           <p align="left"
+              class="indent">
+            I wrote this tutorial on paper in 2000, but never put it online.
+            The addition of <i>Hooks</i> to Blender makes it so much easier to
+            describe, and so 5 years later the tutorial is finally available.
+           </p>
+
+           <p align="left"
+              class="indent">
+            This is my first tutorial for Blender. If you found it useful, I
+            would appreciate any comments or suggestions. And let me know if
+            there are any errors or omissions.
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="center"
+              class="center">
+            This page was last revised on January 22, 2005<br>
+            Copyright &#169; 2005 Anthony D'Agostino<br>
+            All rights reserved.<br>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="spyder"
+               width="45"
+               height="26">
+             <param name="movie"
+                value="misc/spyder.swf">
+             <param name="quality"
+                value="high">
+             <param name="bgcolor"
+                value="#C0C0C0">
+             <embed name="spyder"
+                src="misc/spyder.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="45"
+                height="26"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+            </object>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <p align="left">
+  <script language="JavaScript"
+          src="popup.js"
+          type="text/javascript">
+       </script>
+      </p>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </body>
+</html>

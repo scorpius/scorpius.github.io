@@ -1,0 +1,83 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+ <meta http-equiv=Page-Enter content=blendTrans(Duration=0.6)>
+ <title>User Statistics Page</title>
+ <link rel="stylesheet" href="default.css" type="text/css">
+ <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+ <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body bgcolor="#c0c0c0"  topmargin="8" leftmargin="8">
+
+<script>
+   document.write('<link rel="stylesheet" href="default.css" type="text/css">');
+   document.write('<hr>');
+   document.write('<center>This page is experimental and might not work on all platforms');
+   document.write('<hr>');
+
+   document.write('<br>');
+
+   document.write(document.title);
+   document.write('<br>');
+   document.write("Last modified on: ", document.lastModified);
+   document.write('<br>');
+   document.write("File name: ", document.location);
+   document.write('<br>');
+
+   document.write('<br>');
+   document.write("You are using ", navigator.appName);
+   document.write('<br>');
+   document.write("Your color depth is ", screen.colorDepth, " bits" );
+   document.write('<br>');
+
+   if (screen.pixelDepth) {
+      document.write("Your pixel depth is ", screen.pixelDepth, " bits" );
+      document.write('<br>');
+   }
+
+   document.write("Your screen resolution is ",screen.width,"x", screen.height);
+   document.write('<br>');
+   document.write("Your platform is ", navigator.platform);
+   document.write('<br>');
+
+
+   document.write('<br>');
+   document.write('More info about your browser:<br>');
+   document.write(navigator.userAgent);
+   document.write('<br>');
+
+   document.write(navigator.appCodeName);
+   document.write('<br>');
+   document.write(navigator.appVersion);
+   document.write('<br>');
+
+   if (screen.colorDepth<24) {
+      str = "Viewing this page at less than 24 Bit Color is not recommended!";
+      document.write(str);
+      alert(str);
+   }
+
+   if (screen.width<800) {
+      str = "Viewing this page at less than 800x600 is not recommended!";
+      document.write(str);
+      alert(str);
+   }
+</script>
+
+<br><a href="javascript:window.close()">Close</a>
+
+
+<!--
+<center>
+<form>
+<input type=button value="Close" onClick='javascript:window.close()'>
+</form>
+</center>
+-->
+
+</body>
+</html>

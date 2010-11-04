@@ -1,0 +1,1042 @@
+<html>
+ <head>
+  <meta name="generator"
+        content=
+        "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=us-ascii">
+  <meta name="description"
+        content=
+        "This is the home of the finest collection of ray-traced puzzles rendered with POV-Ray. You will see photo-realistic images of chinese throwing stars, telescopes, and golf balls. Also includes Rubik's Cube, The Snake Cube, Rubik's Revenge, The Pyraminx, The Tangram, and other related puzzles. Thumbnails allow quick previews. No modellers were used. Also has some BMRT images.">
+  <meta name="distribution"
+        content="global">
+  <meta http-equiv="Page-Enter"
+        content="blendTrans(Duration=0.6)">
+  <title>
+   Exploring Wings3D through the Erlang Shell
+  </title>
+  <link rel="stylesheet"
+        href="default.css"
+        type="text/css">
+  <link rel="shortcut icon"
+        href="favicon.ico"
+        type="image/x-icon">
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+ </head>
+ <body bgcolor="#AAAAAA"
+       topmargin="8"
+       leftmargin="8">
+  <div align="center">
+   <table border="0"
+          cellpadding="5"
+          cellspacing="1"
+          width="550"
+          bgcolor="#000000">
+    <tr>
+     <td bgcolor="#C0C0C0">
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0">
+         <tr>
+          <td>
+           <!--webbot bot="HTMLMarkup" startspan -->
+           <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="menu"
+               width="540"
+               height="60">
+            <param name="movie"
+                value="misc/menu.swf">
+            <param name="quality"
+                value="high">
+            <param name="bgcolor"
+                value="#c0c0c0">
+            <embed name="menu"
+                src="misc/menu.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="540"
+                height="60"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+           </object> <!--webbot bot="HTMLMarkup" endspan -->
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="5"
+               cellspacing="1"
+               width="500"
+               bgcolor="#000000">
+         <tr>
+          <td bgcolor="#A298A9">
+           <p align="left"
+              class="title">
+            Exploring Wings3D through the Erlang Shell<br>
+            (for beginners)
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <h3>
+            Introduction
+           </h3>
+
+           <p align="left">
+            This tutorial if for beginners and aspiring plugin writers who
+            would like to know more about the internals of Wings. It will
+            attempt to teach you how to access the data (vertices, edges,
+            faces, etc.) of the objects that you wish to export or modify. The
+            Erlang shell is interactive (there's no need to compile the code)
+            and, therefore, well suited for beginners. You must download the
+            source code for wings to complete the tutorial.
+           </p>
+
+           <h3>
+            The Erlang Shell
+           </h3>
+
+           <p align="left">
+            The first thing you need to do is start Wings, then locate and
+            activate the shell window so that you can type some commands. This
+            window is <strong><em>not</em></strong> the same as the console
+            window that can be accessed from the Window Menu. Depending on
+            which operating system you are running, here's what you need to do:
+           </p>
+
+           <ul>
+            <li>Windows: Click on 'Erlang' in the taskbar.
+            </li>
+
+            <li>Linux: Copy the wings startup script to a file called
+            <em>wings_eshell</em> and delete <strong>"-noinput"</strong> from
+            the last line. Now, start wings with that script and you can type
+            commands at the same terminal prompt.
+            </li>
+
+            <li>Mac OSX: Find the directory where Wings resides by right
+            clicking on the <em>Wings icon</em> and select "Show in Finder,"
+            then right click on <em>Wings3D</em> and select "Show Package
+            Contents," then right click on <em>Resources</em> and select
+            "Copy." Open a terminal and type or paste these commands, but
+            replace the ROOTDIR path with the one you just copied.
+            </li>
+           </ul>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">bash<br>
+                export ROOTDIR="/Applications/Wings3D
+                0.98.36.app/Contents/Resources"<br>
+                export BINDIR=$ROOTDIR/bin<br>
+                export ESDL_DIR=$ROOTDIR/lib<br>
+                export EMU=beam<br>
+                export PROGNAME=`echo $0 | sed 's/.*\///'`<br>
+                exec "$BINDIR/erlexec" -run wings_start start_halt
+                ${1+"$@"}<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <h3>
+            The State Record (St)
+           </h3>
+
+           <p align="left">
+            The state record is a global data structure that contains
+            everything in your scene&#8212;objects, images, materials, etc.
+            When you load a Wings file, it is decompressed (with <em>zlib</em>)
+            and the state data structure is populated. As you model, the state
+            changes constantly, and awaits to be written to disk. It is as
+            simple as that. However, the state is a somewhat complex data
+            structure that contains other data structures&#8212;lists,
+            dictionaries, records, trees, etc.&#8212;that may be deeply nested.
+            The state record is described in the <strong>wings.hrl</strong>
+            include file.
+           </p>
+
+           <h3>
+            Shell Commands
+           </h3>
+
+           <p align="left">
+            Now that the introductory material has been presented, let's see
+            some commands in action. Recent releases of Wings have exposed a
+            function that allows us to peek at the state. Enter <span class=
+            "code">wpa:get_state().</span> at the shell prompt and the current
+            state record will be printed. The results depend on what you have
+            in your scene.
+           </p>
+
+           <h3>
+            Records and wings.hrl
+           </h3>
+
+           <p align="left">
+            Printing the state is practically useless, so a way to extract it's
+            components is needed. This can be done with Erlang's powerful
+            <em>pattern matching</em>. To access and match records from the
+            shell, the record definitions in wings.hrl must be loaded. This can
+            be done effortlessly by utilizing the built-in
+            <strong>read-record</strong> function: <span class=
+            "code">rr("c:/erlang/wings/src/wings.hrl").</span> Make sure the
+            path matches the one on your system. This should be the result:
+            <span class="code">[dlo,edge,st,view,we]</span>.
+           </p>
+
+           <p align="left"
+              class="indent">
+            If you did not compile wings yourself, the above function may fail
+            because of a missing <em>epp.beam</em> module. If this is the case,
+            you can download the file <a href=
+            "scripts/missing-epp.zip">here.</a> To install it, simply unzip and
+            copy the beam to your <strong>ebin</strong> directory:<br>
+           </p>
+
+           <p align="left">
+            <strong>WinXP:</strong> c:\Program
+            Files\wings3d_0.98.35\lib\wings-0.98.35\ebin<br>
+           </p>
+
+           <p align="left">
+            <strong>OSX:</strong>
+            /Applications/Wings3D.app/Contents/Resources/lib/wings-0.98.35/ebin<br>
+            </p>
+
+           <p align="left">
+            <strong>Linux:</strong> ~/wings-0.98.35/lib/wings-0.98.35/ebin<br>
+           </p>
+
+           <h3>
+            A First Example
+           </h3>
+
+           <p align="left">
+            The following code shows how to get the vertices of the
+            <strong>first</strong> object in the scene. Copy and paste it into
+            the shell. Don't forget to adjust the path to the hrl. To access
+            the second object, change the 1 to a 2 in the line that starts with
+            "We".
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">f(),<br>
+                rr("c:/erlang/wings/src/wings.hrl"),<br>
+                St = wpa:get_state(),<br>
+                #st{shapes=Shapes,sel=Sel} = St,<br>
+                We = gb_trees:get(1, St#st.shapes),<br>
+                Vs = gb_trees:values(We#we.vp).<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left">
+            If the first object you created is a cube, you should get a list of
+            the verts similar the following:
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="output">[{-1.00000,-1.00000,1.00000},<br>
+                &nbsp;{-1.00000,1.00000,1.00000},<br>
+                &nbsp;{1.00000,1.00000,1.00000},<br>
+                &nbsp;{1.00000,-1.00000,1.00000},<br>
+                &nbsp;{-1.00000,-1.00000,-1.00000},<br>
+                &nbsp;{-1.00000,1.00000,-1.00000},<br>
+                &nbsp;{1.00000,1.00000,-1.00000},<br>
+                &nbsp;{1.00000,-1.00000,-1.00000}]<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+
+           <h3>
+            Unpacking Records
+           </h3>
+
+           <p align="left">
+            In the above example, St is a variable whose value is a state
+            record, and We is a winged-edge record. These records are defined
+            in wings.hrl.
+           </p>
+
+           <p align="left"
+              class="indent">
+            There are two ways to access records. First, It's easy to see that
+            <span class="code">St#st.shapes</span> accesses the shapes field,
+            and <span class="code">We#we.vp</span> accesses the vertex
+            positions field. This should be easy to follow.
+           </p>
+
+           <p align="left"
+              class="indent">
+            The second way is through unpacking. The 4th line simply shows how
+            records are unpacked and assigned to variables. Now the unused
+            Shapes variable has the exact same value as <span class=
+            "code">St#st.shapes</span>. The 5th line could also have been
+            written as follows: <span class="code">We = gb_trees:get(1,
+            Shapes)</span>.
+           </p>
+
+           <p align="left"
+              class="indent">
+            The only confusing thing is that the unpacking (or pattern
+            matching) of records might appear to be backwards, because you
+            would think it should be written <span class=
+            "code">#st{Shapes=shapes,Sel=sel} = St</span> (i.e., the
+            capitalized variable name should be on the left. But since St is
+            actually a record, the 4th line actually looks like this:
+            <span class="code">#st{shapes=Shapes,sel=Sel} =
+            #st{shapes=GBTREE,sel=LIST}</span>. Therefore the unbound variable
+            <em>Shapes</em> is matched to a <em>gbtree</em>, and sel is matched
+            to a <em>list</em>, so the variable bounding rule is followed. In
+            addition, the atom <em>shapes</em> matches <em>shapes</em> (and
+            <em>sel</em> matches <em>sel</em>), so everything matches up just
+            right.
+           </p>
+
+           <h3>
+            Calling Other Functions
+           </h3>
+
+           <p align="left">
+            At this point, other functions may be called on the data extracted
+            from the state record. For example, if the vertices are in a
+            variable called <em>Vs</em>, the following will calculate the
+            bounding box, the object center, and the radius of the smallest
+            sphere which encloses the object. This makes good use of the
+            built-in <strong><em>e3d_vec</em></strong> module, which contains
+            many useful functions.
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">BBox = e3d_vec:bounding_box(Vs),<br>
+                Center = e3d_vec:average(Vs),<br>
+                [Pmin,Pmax] = BBox,<br>
+                Size = e3d_vec:sub(Pmax,Pmin),<br>
+                Radius = e3d_vec:len(Size),<br>
+                io:fwrite("BBox: ~p\n", [BBox]),<br>
+                io:fwrite("Center: ~p\n", [Center]),<br>
+                io:fwrite("Size: ~p\n", [Size]),<br>
+                io:fwrite("Radius: ~p\n", [Radius]).<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left">
+            These are the results that should be printed for a standard cube
+            object.
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="output">BBox:
+                [{-1.00000,-1.00000,-1.00000},{1.00000,1.00000,1.00000}]<br>
+                Center: {0.00000e+0,0.00000e+0,0.00000e+0}<br>
+                Size: {2.00000,2.00000,2.00000}<br>
+                Radius: 3.46410<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <h3>
+            Non-State Functions
+           </h3>
+
+           <p align="left">
+            Functions that do not deal with the state may also be executed.
+            Here's how to access all the lines that are printed from internal
+            commands to the console window. Enter this code:
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">f(),<br>
+                Lines = [Line || {Eol,Line} &lt;-
+                wings_console:get_all_lines()],<br>
+                PrintString = fun(String) -&gt; io:fwrite("~s\n", [String])
+                end,<br>
+                lists:foreach(PrintString, Lines).<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left">
+            to see the following familiar results:
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="output">Trying OpenGL modes<br>
+                &nbsp;&nbsp;[{buffer_size,32},{depth_size,32},{stencil_size,8},{accum_size,16}]<br>
+
+                Actual: RGBA: 8 8 8 8 Depth: 24 Stencil: 8 Accum: 16 16 16
+                16<br>
+                Using GPU shaders.<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <h3>
+            Sending the Hotkeys List to the Printer
+           </h3>
+
+           <p align="left">
+            Wouldn't it be great to have a printed list of all the defined
+            hotkeys? This can be easily done by entering:
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">f(),<br>
+                Lines = wings_hotkey:listing(),<br>
+                PrintString = fun(String) -&gt; io:fwrite("~s\n", [String])
+                end,<br>
+                lists:foreach(PrintString, Lines).<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left">
+            This could be a long list because it produces the hotkeys for each
+            mode. But now you have the option to make a hardcopy to use as a
+            handy reference.
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="output">Hotkeys in all modes<br>
+                Space: Select|Deselect<br>
+                +: Select|More<br>
+                -: Select|Less<br>
+                1: File|1 (user-defined)<br>
+                @: File|Import|Obj|False (user-defined)<br>
+                Shift+A: View|Frame<br>
+                Shift+C: View|Show Colors (user-defined)<br>
+                etc ...<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <h3>
+            Hotkeys List to HTML Table
+           </h3>
+
+           <p align="left">
+            Here's a format that is much better suited for printing the hotkeys
+            list. The following code should open up a browser with the keys
+            neatly listed in a table. Here I used a recursive anonymous
+            <strong>fun</strong> (not to be confused with a
+            <strong>function</strong>) to do the work.
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">f(),<br>
+                FileName = "hotkeys.htm",<br>
+                {ok, IoDevice} = file:open(FileName, write),<br>
+                PrintKV = fun(Key, Val) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Fmt =
+                "&lt;tr&gt;&lt;td&gt;~s&lt;/td&gt;&lt;td&gt;~s&lt;/td&gt;&lt;/tr&gt;\n",<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice, Fmt, [Key,Val])
+                end,<br>
+                PrintRow = fun([], FunName) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;done;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;([H1,H2|T], FunName) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;PrintKV(H1,H2), FunName(T, FunName)
+                end,<br>
+                PrintMode = fun(Caption, Keys) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Table = "&lt;table border=0
+                cellpadding=2 cellspacing=1 width=550&gt;",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice, "~s\n",
+                [Table]),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice,
+                "&lt;caption&gt;~s&lt;/caption&gt;\n", [Caption]),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;PrintRow(string:tokens(Keys,"\:\n"),
+                PrintRow),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice, "~s\n",
+                ["&lt;/table&gt;&lt;br&gt;\n"]) end,<br>
+                PrintListing = fun([], FunName) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;done;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;([H1,H2|T], FunName) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;PrintMode(H1,H2), FunName(T, FunName)
+                end,<br>
+                PrintStyle = fun() -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;S = ["&lt;style
+                type=\"text/css\"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;tr, td, th, p {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-family: Verdana, Arial, Helvetica,
+                sans-serif\;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-size: 12px\;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;line-height: 18px\;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #C0C0C0\;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;table { background-color: #666666\;
+                }<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;caption {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-family: Trebuchet MS, Verdana,
+                Arial, Helvetica, sans-serif\;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-size: 18px\;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold\;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: #555555\;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div align=\"center\"&gt;"],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice, "~s\n\n", [S])
+                end,<br>
+                HotKeys = wings_hotkey:listing(),<br>
+                PrintStyle(),<br>
+                PrintListing(HotKeys, PrintListing),<br>
+                file:close(IoDevice),<br>
+                {Osfamily, Osname} = os:type(),<br>
+                case Osname of<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;nt -&gt; os:cmd("start
+                "++FileName);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;windows -&gt; io:fwrite("Open~p\n",
+                [FileName]);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;linux -&gt; os:cmd("firefox
+                "++FileName);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;darwin -&gt; os:cmd("open
+                "++FileName)<br>
+                end.<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <h3>
+            Modules and Functions
+           </h3>
+
+           <p align="left">
+            You can easily find modules and functions by pressing tab in the
+            console window. This will give you a list of modules. Enter the
+            name of a module followed by a colon, then press tab to see a list
+            of all the functions that the module exports. Any function that has
+            <span class="code">/0</span> at the end signifies that it takes no
+            parameters and you can simple execute it.
+           </p>
+
+           <p align="left"
+              class="indent">
+            In the console, the tab key acts a completion helper. Most of the
+            wings modules start with a "w". So type a "w" and press tab to see
+            all the modules that start with that letter. By using the tab you
+            can easily type long functions without cut and paste. Try to find
+            and execute the following function by using a combination of typing
+            and the tab key: <span class="code">wings_util:wings().</span>
+           </p>
+
+           <h3>
+            Vertex Selection Example
+           </h3>
+
+           <p align="left">
+            Many functions deal with the currently selected
+            elements&#8212;vertices, edges, faces, or entire objects. Wings is
+            flexible enough that it allows you to select elements on more than
+            one object simultaneously. Don't forget to take this into account
+            if you want to limit your selection to a single object. This
+            actually came up as I was writing the <em>shortest path</em>
+            selector. It didn't make much sense to select the shortest path (as
+            a series of edges) between two vertices on two different objects
+            because there are no edges connecting separate objects!
+           </p>
+
+           <p align="left"
+              class="indent">
+            Here's an example of how to get the selected elements. The current
+            mode&#8212;vertex, edge, face, or body&#8212;determines the type of
+            the elements in the variable <em>Sel</em>. Select any two vertices
+            on a cube and paste in these lines:
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">f(),<br>
+                rr("c:/erlang/wings/src/wings.hrl"),<br>
+                St = wpa:get_state(),<br>
+                #st{shapes=Shapes,selmode=Mode,sel=Sel} = St,<br>
+                [{Id,SelectedVs}] = Sel,<br>
+                We = gb_trees:get(Id, Shapes),<br>
+                [Pa,Pb] = [wings_vertex:pos(Vert, We) || Vert &lt;-
+                gb_sets:to_list(SelectedVs)].<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left">
+            Now points A and B are bound to the variables <em>Pa</em> and
+            <em>Pb</em>. Note that Pa is not necessarily the first point
+            selected. Selections are not returned in the order that they were
+            selected.
+           </p>
+
+           <h3>
+            Face Selection Example
+           </h3>
+
+           <p align="left">
+            Here's an example of how to get the selected faces. Select any
+            number of faces on a cube and paste in these lines:
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">f(),<br>
+                rr("c:/erlang/wings/src/wings.hrl"),<br>
+                St = wpa:get_state(),<br>
+                #st{shapes=Shapes,selmode=Mode,sel=Sel} = St,<br>
+                [{Id,SelectedFs}] = Sel,<br>
+                We = gb_trees:get(Id, Shapes),<br>
+                [wings_face:vertex_positions(Face, We) || Face &lt;-
+                gb_sets:to_list(SelectedFs)].<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left">
+            You'll get a list of lists of tuples. This is the object in
+            <em>raw</em> format. Note that SelectedVs was changed to SelectedFs
+            (to avoid confusion) and a function from the <em>wings_face</em>
+            module was utilized. It is possible write a complete exporter by
+            using the shell and a few simple functions (or Erlang Anonymous
+            <em>Fun</em>s).
+           </p>
+
+           <h3>
+            A Simple Object Exporter
+           </h3>
+
+           <p align="left">
+            This code will export the first mesh to Wavefront OBJ, a common
+            format. It will export the mesh data, but the materials and
+            textures will be ignored. Why do you need this example if a full
+            featured OBJ exporter is included with Wings? Because this one is
+            meant to get you started.
+           </p>
+
+           <p align="left"
+              class="indent">
+            I should mention that this example requires 0.98.36 because of a
+            new function: <span class=
+            "code">e3d_util:raw_to_indexed(Raw).</span> Or you may simply
+            download the new e3d_util module and put in your ebin directory.
+           </p>
+
+           <p align="left"
+              class="indent">
+            In addition, instead of printing the object to the console window,
+            exporting to a file may be done by passing a filename instead of
+            the atom <em>none</em>, for example: <span class=
+            "code">ObjExport(Vs2, Fs2, 'c:/temp/cube.obj').</span> Remember to
+            quote the filename with single quotes.
+           </p>
+
+           <p align="left"
+              class="indent">
+            As an exercise, see if you can modify the code to automatically
+            triangulate the model before exporting. Hint: use <span class=
+            "code">We2 = wpa:triangulate(We).</span>
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">f(),<br>
+                ObjExport = fun (Verts, Faces, FileName) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;case (FileName==none) of<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true -&gt;
+                IoDevice = standard_io;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false -&gt;
+                {ok, IoDevice} = file:open(FileName, write)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;end,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;PrintVert = fun(Vertex) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{X,Y,Z} =
+                Vertex,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice,
+                "v ~9f ~9f ~9f\n", [X,Y,Z]) end,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;PrintIdx = fun(Index) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice,
+                " ~w", [Index+1]) end,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;PrintFace = fun(Face) -&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io:put_chars(IoDevice,
+                "f"),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lists:foreach(PrintIdx,
+                Face),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io:put_chars(IoDevice,
+                "\n") end,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice, "# NumVerts: ~p\n",
+                [length(Verts)]),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice, "# NumFaces: ~p\n",
+                [length(Faces)]),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;io:fwrite(IoDevice, "g Mesh\n",
+                []),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;lists:foreach(PrintVert, Verts),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;lists:foreach(PrintFace, Faces),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;file:close(IoDevice)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;end,<br>
+                rr("c:/erlang/wings/src/wings.hrl"),<br>
+                St = wpa:get_state(),<br>
+                #st{shapes=Shapes} = St,<br>
+                We = gb_trees:get(1, St#st.shapes),<br>
+                Vs = gb_trees:values(We#we.vp),<br>
+                Fs = gb_trees:keys(We#we.fs),<br>
+                Raw = [wings_face:vertex_positions(Face, We) || Face &lt;-
+                Fs],<br>
+                {Vs2, Fs2} = e3d_util:raw_to_indexed(Raw),<br>
+                ObjExport(Vs2, Fs2, none).<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <h3>
+            Modifying Objects
+           </h3>
+
+           <p align="left">
+            Many wings functions simply take the state as input, modify it,
+            then return the modified state as output. That sounds pretty
+            simple, and it is. If you were clever enough, you could call one of
+            these functions from the shell and modify objects. The drawback for
+            now is that <em>wpa:<strong>put_state</strong>().</em> doesn't
+            exist.
+           </p>
+
+           <p align="left"
+              class="indent">
+            Another large set of functions take the <em>We</em> record (the
+            <em>W</em>inged-<em>E</em>dge <em>D</em>ata <em>S</em>tructure) as
+            input, modify it, and return it. Make sure to read the
+            <em>wings_we</em> module as soon as your project requires it. For a
+            little insight on the WEDS format try this:
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="code">f(),<br>
+                wings_u:export_we("tmpweds.txt", wpa:get_state()),<br>
+                {ok,Data} = file:read_file("tmpweds.txt"),<br>
+                file:delete("tmpweds.txt"),<br>
+                io:fwrite("~s", [binary_to_list(Data)]).<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left">
+            The above simply outputs dumps the winged-edge data structure to a
+            file and then reads it back to you. This is useful if it's the
+            first time you encounter this structure. Here's the output for a
+            tetrahedron.
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="8"
+                    cellspacing="1"
+                    width="450"
+                    bgcolor="#808080">
+              <tr>
+               <td bgcolor="#D8D8D8">
+                <span class="output">OBJECT 1: "tetrahedron1"<br>
+                =======================<br>
+                &nbsp;&nbsp; mode=material next_id=7<br>
+                <br>
+                Face table<br>
+                ===========<br>
+                <br>
+                0: edge=1<br>
+                1: edge=4<br>
+                2: edge=1<br>
+                3: edge=2<br>
+                <br>
+                Edge table<br>
+                ===========<br>
+                <br>
+                1: vs=0 ve=1<br>
+                &nbsp;&nbsp;a=none b=none<br>
+                &nbsp;&nbsp;left: face=2 pred=5 succ=3<br>
+                &nbsp;&nbsp;right: face=0 pred=2 succ=4<br>
+                2: vs=0 ve=2<br>
+                &nbsp;&nbsp;a=none b=none<br>
+                &nbsp;&nbsp;left: face=0 pred=4 succ=1<br>
+                &nbsp;&nbsp;right: face=3 pred=3 succ=6<br>
+                3: vs=0 ve=3<br>
+                &nbsp;&nbsp;a=none b=none<br>
+                &nbsp;&nbsp;left: face=3 pred=6 succ=2<br>
+                &nbsp;&nbsp;right: face=2 pred=1 succ=5<br>
+                4: vs=1 ve=2<br>
+                &nbsp;&nbsp;a=none b=none<br>
+                &nbsp;&nbsp;left: face=1 pred=6 succ=5<br>
+                &nbsp;&nbsp;right: face=0 pred=1 succ=2<br>
+                5: vs=1 ve=3<br>
+                &nbsp;&nbsp;a=none b=none<br>
+                &nbsp;&nbsp;left: face=2 pred=3 succ=1<br>
+                &nbsp;&nbsp;right: face=1 pred=4 succ=6<br>
+                6: vs=2 ve=3<br>
+                &nbsp;&nbsp;a=none b=none<br>
+                &nbsp;&nbsp;left: face=1 pred=5 succ=4<br>
+                &nbsp;&nbsp;right: face=3 pred=2 succ=3<br></span>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left"
+              class="indent">
+            Finally, the nicest and most elegant way to exit (or quit) Wings
+            from the shell is to execute this simple function: <span class=
+            "code">q().</span>
+           </p>
+
+           <h3>
+            Conclusion
+           </h3>
+
+           <p align="left">
+            Now that you had a chance to code interactively, you will be more
+            prepared to write your own functions and new features for Wings. I
+            have tried to be as comprehensive as possible and this tutorial
+            should give you a great head start on your journey to plugin
+            writing. For other information dealing with primitives, see my
+            other tutorial: <a href="tut-wings-plugin.htm">How To Write Wings3D
+            Plugins</a>.
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="center"
+              class="center">
+            This page was last revised on October 12, 2006<br>
+            Copyright &#169; 2006 Anthony D'Agostino<br>
+            All rights reserved.<br>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="spyder"
+               width="45"
+               height="26">
+             <param name="movie"
+                value="misc/spyder.swf">
+             <param name="quality"
+                value="high">
+             <param name="bgcolor"
+                value="#C0C0C0">
+             <embed name="spyder"
+                src="misc/spyder.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="45"
+                height="26"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+            </object>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+  <script language="JavaScript"
+          src="popup.js"
+          type="text/javascript">
+      </script>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </body>
+</html>

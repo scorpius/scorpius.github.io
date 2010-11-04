@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta name="generator"
+        content=
+        "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=us-ascii">
+  <meta http-equiv="Page-Enter"
+        content="blendTrans(Duration=0.6)">
+  <title>
+   Eliminate JPEG Artifacts
+  </title>
+  <link rel="stylesheet"
+        href="default.css"
+        type="text/css">
+  <link rel="shortcut icon"
+        href="favicon.ico"
+        type="image/x-icon">
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+ </head>
+ <body bgcolor="#C0C0C0">
+  <p align="left">
+   <strong>Eliminate JPEG Artifacts</strong><br>
+   March 5, 2000<br>
+   <br>
+   <strong>Sampling</strong><br>
+   To eliminate jpeg artifacts, set the horizontal and vertical component
+   sampling factors to 1x1. Sadly, Blender and most other jpeg encoders default
+   to 2x1 and do not allow it to be changed. This little known trick yields the
+   highest possible quality for jpeg, with a very slight increase in file size.
+  </p>
+  <br>
+
+  <p align="left">
+   <strong>Quality Factor<br></strong>Never use a quality factor higher than
+   95, it usually inflates the file size and makes no visible difference. A
+   quality factor of 100 combined with 2x1 sampling will produce more artifacts
+   than a quality factor of 95 with 1x1 sampling.<br>
+   <br>
+   This technique, with emphasis on the sampling factors, should greatly reduce
+   banding that occurs in areas of gradients and other blocky-atifacts that
+   appear near edges and areas of high contrast. It also works wonders for
+   screen grabs of dialog boxes and for delicate line art. However, as rendered
+   images become more and more realistic (due to radiosity &amp; global
+   illumination, procedural textures that replicate natural patterns, etc.) the
+   1x1 sampling trick doesn't have as much effect as it used to. But it will
+   always have its uses.
+  </p>
+  <br>
+
+  <p align="left">
+   CJPEG users can adjust the sampling with this command:<br>
+   <em>cjpeg -progressive -opt -qual 95 -sample 1x1 name.tga name.jpg</em>
+  </p>
+ </body>
+</html>

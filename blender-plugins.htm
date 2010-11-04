@@ -1,0 +1,898 @@
+<html>
+ <head>
+  <meta name="generator"
+        content=
+        "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=us-ascii">
+  <meta name="description"
+        content=
+        "This is the home of the finest collection of ray-traced puzzles rendered with POV-Ray. You will see photo-realistic images of chinese throwing stars, telescopes, and golf balls . Also includes Rubik's Cube, The Snake Cube, Rubik's Revenge, The Pyraminx, The Tangram, and other related puzzles. Thumbnails allow quick previews. No modellers were used. Also has some BMRT images.">
+  <meta name="distribution"
+        content="global">
+  <meta http-equiv="Page-Enter"
+        content="blendTrans(Duration=0.6)">
+  <title>
+   Useful Python Scripts for Blender
+  </title>
+  <link rel="stylesheet"
+        href="default.css"
+        type="text/css">
+  <link rel="shortcut icon"
+        href="favicon.ico"
+        type="image/x-icon">
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+ </head>
+ <body bgcolor="#AAAAAA"
+       topmargin="8"
+       leftmargin="8">
+  <div align="center">
+   <table border="0"
+          cellpadding="5"
+          cellspacing="1"
+          width="550"
+          bgcolor="#000000">
+    <tr>
+     <td bgcolor="#C0C0C0">
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0">
+         <tr>
+          <td>
+           <!--webbot bot="HTMLMarkup" startspan -->
+           <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="menu"
+               width="540"
+               height="60">
+            <param name="movie"
+                value="misc/menu.swf">
+            <param name="quality"
+                value="high">
+            <param name="bgcolor"
+                value="#c0c0c0">
+            <embed name="menu"
+                src="misc/menu.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="540"
+                height="60"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+           </object> <!--webbot bot="HTMLMarkup" endspan -->
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0"
+               width="500"
+               bgcolor="#000000">
+         <tr>
+          <td>
+           <table border="0"
+                  cellpadding="5"
+                  cellspacing="1"
+                  width="500"
+                  bgcolor="#000000">
+            <tr>
+             <td bgcolor="#B0A090">
+              <p align="left"
+                 class="title">
+               Python Scripts<br>
+               for Blender
+              </p>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            <strong>Doo-Sabin Subdivision</strong> <a href=
+            "scripts/doosabin.zip">doosabin.zip</a><br>
+            This script is a working implementation of doo-sabin subdivision.
+            The mesh is converted to a topology/geometry representation (raw
+            verts and faces lists), the subdivided mesh is stored in raw
+            format, and converted back to indexed format at the end. It's not
+            very fast, but it works.
+           </p>
+
+           <p align="left"
+              class="indent">
+            Shortcuts: NumPad Plus Key - Increase the resolution in
+            realtime;<br>
+            NumPad Minus Key - Decrease the resolution in realtime
+           </p>
+
+           <p align="left"
+              class="indent">
+            Install it in your <i>Blender/.blender/scripts</i> directory, then
+            find it under the <b>Add</b> menu in the <b>Scripts Window</b>.
+            More help, info, and key shortcuts are documented under
+            <i>Help-&gt;Scripts Help Browser-&gt;Mesh-&gt;Doo-Sabin
+            Subdivision.</i>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            <strong>Geodesic Dome Generator</strong> <a href=
+            "scripts/geodome-teapot.zip">geodome-teapot.zip</a><br>
+            This script generates standard geodesic domes similar to Blender's
+            IcoSphere, but adds the following features: resolutions higher than
+            5; two subdivision algorithms; spherize/keep-flat or full/half-dome
+            options; and 3 geodesic bases. It outputs meshes with no duplicate
+            vertices and is fully interactive.
+           </p>
+
+           <p align="left"
+              class="indent">
+            It's basically a clone of my geodome plugin for Wings, and is
+            written entirely in Erlang style: no for loops, no global
+            variables, use of recursive functions, use of list comprehensions,
+            etc. It can be used to compare the Python and Erlang programming
+            languages, since most of the functions and variable names are
+            identical.
+           </p>
+
+           <p align="left"
+              class="indent">
+            Install it in your <i>Blender/.blender/scripts</i> directory, then
+            find it under the <b>Add</b> menu in the <b>Scripts Window</b>.
+            More help, info, and key shortcuts are documented under
+            <i>Help-&gt;Scripts Help Browser-&gt;Add-&gt;Geodesic Dome
+            Generator.</i>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            <strong>Newell Teapot Generator</strong> <a href=
+            "scripts/geodome-teapot.zip">geodome-teapot.zip</a><br>
+            This script adds a famous missing primitive: the Newell Teapot.
+            Most modelers have had this primitive for years, and now so does
+            Blender. Includes several other bezier models including Yoda!
+           </p>
+
+           <p align="left"
+              class="indent">
+            Install it in your <i>Blender/.blender/scripts</i> directory, then
+            find it under the <b>Add</b> menu in the <b>Scripts Window</b>.
+            More help, info, and key shortcuts are documented under
+            <i>Help-&gt;Scripts Help Browser-&gt;Add-&gt;Newell Teapot
+            Generator.</i>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               width="500"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td bgcolor="#C0C0C0">
+           <p align="left">
+            <strong>Import-Export Suite</strong> <a href=
+            "scripts/IO-Menu.zip">IO-Menu.zip</a> (for v2.32)<br>
+            This suite of Python modules enables Blender to read and write
+            <strong>ten</strong> 3D file formats. It allows <strong>radiosity
+            solutions</strong> to be exported to trueSpace, Wings3D,
+            VideoScape, Nendo, and LightWave.<br>
+           </p>
+
+           <p align="left"
+              class="indent">
+            It was formerly called the <em>Radiosity Import Export Suite</em>
+            mainly because it was developed to import/export
+            <strong>vertex-colored</strong> meshes using my own custom file
+            format (<em>*.radio</em>), and because I wanted to know how vertex
+            colors and meshes were stored. But now UV support and other formats
+            have been added (see the table below).<br>
+           </p>
+
+           <p align="left"
+              class="indent">
+            Includes some nice sample objects <a href=
+            "scripts/IO-Examples.zip">IO-Examples.zip</a> to get you started:
+            cornell-box.radio, hand.radio, plane.radio, sphere.radio,
+            torus-knot.radio, and lumpy-torus.radio.
+           </p>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="0"
+                    cellspacing="10"
+                    width="350">
+              <tr>
+               <td bgcolor="#808080">
+                <div align="center">
+                 <table border="0"
+                        cellpadding="5"
+                        cellspacing="1"
+                        width="350"
+                        bgcolor="#808080">
+                  <tr>
+                   <th bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     Format
+                    </p>
+                   </th>
+                   <th bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     I/O
+                    </p>
+                   </th>
+                   <th bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     UV
+                    </p>
+                   </th>
+                   <th bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     VCOL
+                    </p>
+                   </th>
+                   <th bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     Application
+                    </p>
+                   </th>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.mesh
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     LightFlow
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.ndo
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     Nendo
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.cob
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     trueSpace
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.scn
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     trueSpace
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.obj
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     VideoScape
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.radio
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     Radio
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.lwo
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     LightWave
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.raw
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     Raw Triangle
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.off
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     DEC Object
+                    </p>
+                   </td>
+                  </tr>
+
+                  <tr>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     *.wings
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     R/W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     _
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     W
+                    </p>
+                   </td>
+                   <td align="center"
+                       bgcolor="#C0C0C0">
+                    <p align="center"
+                       class="center">
+                     Wings3D
+                    </p>
+                   </td>
+                  </tr>
+                 </table>
+                </div>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+
+           <p align="left">
+            <strong>For Blender 2.28</strong><br>
+            Extract <a href="scripts/IO-Suite2.zip">IO-Suite2.zip</a> to a
+            directory on your pythonpath (or your BlenderDir), then run the
+            contents of <a href="scripts/IO-Suite1.zip">IO-Suite1.zip</a> to
+            import or export. Most of the new work is in the lightwave module
+            (matererial indices, vertex colors, materials, specular highlights,
+            etc.).
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            <strong>Backface Culling Script</strong> <a href=
+            "scripts/backface.zip">backface.zip</a><br>
+            This script operates on the selected mesh and removes all polygons
+            which are facing away from the camera (backface culling). It
+            actually results in a 20% to 50% <strong>reduction</strong> in
+            rendering time! It can also be used to perform 'hidden line
+            removal' for cleaner wireframe renderings. (It may not always work
+            properly for every situation, but I have successfully used it on
+            objects with over 122,000 faces.) Let me know if you find it
+            useful.
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            <strong>Displacement Mapping Suite</strong> <a href=
+            "scripts/displace.zip">displace.zip</a> | <a href=
+            "scripts/displace-tutorial.zip">displace-tutorial.zip</a><br>
+            Displacement mapping uses a greyscale image to create an actual
+            raised surface by modifying (displacing) the vertices. Bump mapping
+            creates the illusion of a raised surface by modifying the vertex
+            normals. A black pixel results in no displacement or bump, white
+            results in full displacement or bump, and grey values are in
+            between.<br>
+           </p>
+
+           <p align="left"
+              class="indent">
+            The good news is that, in addition to bump mapping, Blender
+            supports displacement mapping (see the Tutor Guide #1). The bad
+            news is that it only works for grids or subdivided planes. This
+            feature, called planar displacement mapping, is great for making
+            terrains, mountains, and even bathroom tiles.<br>
+           </p>
+
+           <p align="left"
+              class="indent">
+            However, if you want to displace the surface of a sphere, cylinder,
+            or torus, Blender's current method will not be sufficient. To get
+            around this, I have created several python scripts that enable
+            Blender to support Spherical, Cylindrical, and Toroidal
+            Displacement Mapping.<br>
+           </p>
+
+           <p align="left"
+              class="indent">
+            You can also download a more complete tutorial that shows how to
+            create a volley ball.
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            <strong>UV Torus Suite</strong> <a href=
+            "scripts/uv-torus.blend">uv-torus.blend</a><strong><br></strong> UV
+            Torus Suite is a GUI python script that generates three types of
+            tori with UV coordinates and Vertex Colors. It can create a
+            standard torus (just like SurfDonut) and two variations (just like
+            those included with LightFlow). It allows the user to specify the
+            U/V resolution and a major/minor radius. For the two variations, a
+            loop and loop radius can also be specified. This script is designed
+            to be used with hotkeys and is fully interactive. It also comes
+            with some rather extensive documentation, and a quick tutorial.
+            When it comes to making tori, you can't go wrong with UV Torus
+            Suite!
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            <strong>Wavefront OBJ Export Script</strong> <a href=
+            "scripts/OFF-OBJ-export.zip">OFF-OBJ-export.zip</a><br>
+            This simple script writes the currently selected mesh to a
+            Wavefront OBJ file.&nbsp;The archive also includes a DEC OFF export
+            script. The OFF format is almost identical to Wavefront's OBJ. I
+            wrote this one so I could get my huge meshes into Moonlight
+            Atelier. (DXF can also be used but the file size is five times
+            larger than OFF!) Blender/Moonlight users might find this script to
+            be very useful.
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="center"
+              class="center">
+            This page was last revised on 
+            <!--webbot bot="Timestamp" startspan s-type="EDITED"
+        s-format="%A, %B %d, %Y" -->Monday, March 22, 2004 
+<!--webbot bot="Timestamp"
+        i-checksum="30806" endspan --><br>
+            Copyright <!--webbot bot="HTMLMarkup" startspan -->&#169; 
+            <!--webbot bot="HTMLMarkup" endspan --> 2001-2004 Anthony
+            D'Agostino<br>
+            All rights reserved.<br>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="spyder"
+               width="45"
+               height="26">
+             <param name="movie"
+                value="misc/spyder.swf">
+             <param name="quality"
+                value="high">
+             <param name="bgcolor"
+                value="#C0C0C0">
+             <embed name="spyder"
+                src="misc/spyder.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="45"
+                height="26"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+            </object>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </body>
+</html>

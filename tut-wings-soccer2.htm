@@ -1,0 +1,315 @@
+<html>
+ <head>
+  <meta name="generator"
+        content=
+        "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=us-ascii">
+  <meta name="description"
+        content=
+        "This is the home of the finest collection of ray-traced puzzles rendered with POV-Ray. You will see photo-realistic images of chinese throwing stars, telescopes, and golf balls . Also includes Rubik's Cube, The Snake Cube, Rubik's Revenge, The Pyraminx, The Tangram, and other related puzzles. Thumbnails allow quick previews. No modellers were used. Also has some BMRT images.">
+  <meta name="distribution"
+        content="global">
+  <meta http-equiv="Page-Enter"
+        content="blendTrans(Duration=0.6)">
+  <title>
+   Wings3D Soccer Ball Tutorial Part 2: UV Texturing
+  </title>
+  <link rel="stylesheet"
+        href="default.css"
+        type="text/css">
+  <link rel="shortcut icon"
+        href="favicon.ico"
+        type="image/x-icon">
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+ </head>
+ <body bgcolor="#AAAAAA"
+       topmargin="8"
+       leftmargin="8">
+  <div align="center">
+   <table border="0"
+          cellpadding="5"
+          cellspacing="1"
+          width="550"
+          bgcolor="#000000">
+    <tr>
+     <td bgcolor="#C0C0C0">
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0">
+         <tr>
+          <td>
+           <!--webbot bot="HTMLMarkup" startspan -->
+           <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="menu"
+               width="540"
+               height="60">
+            <param name="movie"
+                value="misc/menu.swf">
+            <param name="quality"
+                value="high">
+            <param name="bgcolor"
+                value="#c0c0c0">
+            <embed name="menu"
+                src="misc/menu.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="540"
+                height="60"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+           </object> <!--webbot bot="HTMLMarkup" endspan -->
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0"
+               width="500"
+               bgcolor="#000000">
+         <tr>
+          <td>
+           <table border="0"
+                  cellpadding="5"
+                  cellspacing="1"
+                  width="500"
+                  bgcolor="#000000">
+            <tr>
+             <td bgcolor="#A298A9">
+              <p align="left"
+                 class="title">
+               Wings3D Soccer Ball Tutorial<br>
+               Part 2: UV Texturing
+              </p>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            Wings3D has very powerful and unique uv mapping capabilities. The
+            standard mapping types (spherical, planar, etc.) have been replaced
+            by just two types: projection and unfolding. Compared to other 3D
+            apps, this may seem like a limitation. After all, the most logical
+            way to wrap an image around a ball is to use spherical mapping.
+           </p>
+
+           <p align="left"
+              class="indent">
+            Blender's spherical mapping, along with a seamless spherical image
+            map, was used to render my <a href=
+            "javascript:popup('large/soccerball.jpg')">example</a> image and
+            the results speak for themselves. The problem is that creating such
+            a map is not easy. So we will use Wings' AutoUV approach to achieve
+            the same results. Follow the steps below to add UV coordinates to
+            the soccer ball. <a href="tut-wings-soccer1.htm">Jump to Part
+            1</a>.
+           </p>
+
+           <ol>
+            <li>Let's begin by going back to step 2 of part 1 and making a few
+            simple changes before extruding the faces. Our goal is to generate
+            discontinuous and undistorted uv coordinates for each of the 32
+            panels on the ball. In order to do this with the autouv function,
+            we must ensure that no two faces that share an edge have the same
+            material.
+            </li>
+
+            <li>Right click on the Outliner window and create a new material,
+            name the material "Black," and set the color to black or dark grey.
+            A neat shortcut is to drag the black box from the emission field to
+            the diffuse field. Select all 12 pentagons and assign this material
+            to them by right clicking on "Black" in the Outliner window and
+            select <em>Assign to Selection</em>.
+            </li>
+
+            <li>Now create a "Red" material (the exact color is not important).
+            Press 'X' to view along the x-axis and you should see two hexagons
+            side by side. Select the top left, top right, bottom left, and
+            bottom right hexagons. Now view along the negative x-axis and
+            select the 4 hexagons on that side also. Assign the red material to
+            these 8 faces.
+            </li>
+
+            <li>Now create a "Green" material. There should now be 6 pairs of
+            faces (with the default grey color) that have not been assigned.
+            Select one face from each pair and assign the green material to
+            these 6 faces.
+            </li>
+
+            <li>At this point, all faces that share an edge will have a
+            different material. Continue with steps 2 through 7 of part 1 and
+            finish modeling the ball. Note that step 7 has changed slightly due
+            to a minor modification in the later releases (98% instead of -2%).
+            </li>
+
+            <li>Our pre-segmented model is now ready to receive uv coordinates.
+            In body mode, select and right click on the object and select
+            <em>UV Mapping</em>. Right click in the AutoUV window that pops up
+            and select <em>Continue&gt;Projection</em>. Warning: Do not click
+            on <em>Segment By</em>! The AutoUV window shows a nice, neat stack
+            of 20 hexagons and 12 pentagons.
+            </li>
+
+            <li>To clean up the map, right click and select <em>Create
+            Texture</em> to access the <em>Draw Options</em> Menu. Select
+            <em>Draw Border Edges</em>, and make sure to
+            <strong>uncheck</strong> all of the other options. Click
+            <em>OK</em> and close the AutoUV window, if you wish.
+            </li>
+
+            <li>Choose <em>File-&gt;Export-&gt;Wavefront</em> to export the
+            uv-mapped model to soccer.obj. The accompanying image map, which is
+            usually named diffuse.tga, will also be exported automatically.
+            </li>
+
+            <li>Open diffuse.tga in your favorite image editing application and
+            use it as a template to position your smaller images. Create a new
+            layer and drag/drop or paint your logos over each hexagon and
+            pentagon as desired. When you are done, delete the background layer
+            and save your image map. Steps A and B are for PhotoShop users:
+             <ol type="A"
+                 start="1">
+              <li>Create a new 80x80 document and use the Marquee tool to
+              create a red circle. Select all and copy to clipboard. This will
+              be used as the logo for the hexagons. Select the magic wand tool
+              (W key) and click anywhere inside a hexagon. Now choose Paste and
+              the logo will be perfectly centered in the hexagon (pretty neat,
+              right?). Repeat for the other hexagons and do something similar
+              for the pentagons.
+              </li>
+
+              <li>Time to clean up the map. In the layers palette, click to
+              highlight the Background layer. Select all and press Delete to
+              fill with white. Select Flatten Image and save to (overwrite)
+              diffuse.tga.
+              </li>
+             </ol>
+            </li>
+
+            <li>Now open the Outliner Window in Wings, right click on diffuse
+            and select <em>Refresh</em> to see your painted map. (This works
+            only if you still have the soccer mesh loaded and as soon as you
+            have applied the UV coordinates).
+            </li>
+
+            <li>Start your rendering application, load your object and apply
+            the image you just created. View the applied map in real-time (if
+            supported by your app) or do a test rendering and see how your
+            logos look on the soccer ball's surface.
+            </li>
+
+            <li>You can now apply smoothing (Catmull-Clark Subdivision
+            Surfaces) and the uv coordinates will be automatically
+            interpolated.
+            </li>
+           </ol>
+
+           <p align="left"
+              class="indent">
+            So now you have a nice uv-mapped soccer ball that is ready to be
+            lit and rendered. So paint some nice original logos, add some
+            noise/dirt/grime, finish it off with a subtle application of a bump
+            map, and you should get professional quality results in no time.
+            Don't forget to send me the urls of any nice renderings that you
+            create.
+           </p>
+
+           <p align="left"
+              class="indent">
+            There's an old version in the BMRT section that was done without
+            modeling the actual geometry; it just uses a single spherical
+            bump-map. Compare it to this one to see the difference.
+           </p>
+
+           <p align="left"
+              class="indent">
+            This is my first uv-mapping tutorial for Wings, so I would
+            appreciate any comments or suggestions. And let me know if there
+            are any errors or omissions.
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="center"
+              class="center">
+            This page was last revised on May 30, 2003<br>
+            Copyright <!--webbot bot="HTMLMarkup" startspan -->&#169; 
+            <!--webbot bot="HTMLMarkup" endspan --> 2003 Anthony D'Agostino<br>
+            All rights reserved.<br>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="spyder"
+               width="45"
+               height="26">
+             <param name="movie"
+                value="misc/spyder.swf">
+             <param name="quality"
+                value="high">
+             <param name="bgcolor"
+                value="#C0C0C0">
+             <embed name="spyder"
+                src="misc/spyder.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="45"
+                height="26"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+            </object>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+  <script language="JavaScript"
+          src="popup.js"
+          type="text/javascript">
+      </script>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </body>
+</html>

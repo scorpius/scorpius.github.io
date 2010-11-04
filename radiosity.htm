@@ -1,0 +1,297 @@
+<html>
+ <head>
+  <meta name="generator"
+        content=
+        "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=us-ascii">
+  <meta name="description"
+        content=
+        "Do you want to see how Blender's radiosity solver compares to the one developed at Cornell University? Also includes some radiosity tips and hints for Blender users.">
+  <meta name="distribution"
+        content="global">
+  <meta http-equiv="Page-Enter"
+        content="blendTrans(Duration=0.6)">
+  <title>
+   Radiosity: Cornell vs. Blender
+  </title>
+  <link rel="stylesheet"
+        href="default.css"
+        type="text/css">
+  <link rel="shortcut icon"
+        href="favicon.ico"
+        type="image/x-icon">
+  <link rel="icon"
+        href="favicon.ico"
+        type="image/x-icon">
+ </head>
+ <body bgcolor="#AAAAAA"
+       topmargin="8"
+       leftmargin="8">
+  <div align="center">
+   <table border="0"
+          cellpadding="5"
+          cellspacing="1"
+          width="550"
+          bgcolor="#000000">
+    <tr>
+     <td bgcolor="#C0C0C0">
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0">
+         <tr>
+          <td>
+           <!--webbot bot="HTMLMarkup" startspan -->
+           <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="menu"
+               width="540"
+               height="60">
+            <param name="movie"
+                value="misc/menu.swf">
+            <param name="quality"
+                value="high">
+            <param name="bgcolor"
+                value="#c0c0c0">
+            <embed name="menu"
+                src="misc/menu.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="540"
+                height="60"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+           </object> <!--webbot bot="HTMLMarkup" endspan -->
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0"
+               width="500"
+               bgcolor="#000000">
+         <tr>
+          <td>
+           <table border="0"
+                  cellpadding="5"
+                  cellspacing="1"
+                  width="500"
+                  bgcolor="#000000">
+            <tr>
+             <td bgcolor="#88A0A4">
+              <p align="left"
+                 class="title">
+               Radiosity:<br>
+               Cornell vs. Blender
+              </p>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellspacing="0">
+         <tr>
+          <td>
+           <img src="large/box-original.jpg"
+               width="512"
+               height="512">
+          </td>
+         </tr>
+
+         <tr>
+          <td>
+           <img src="large/box-blender.jpg"
+               width="512"
+               height="512">
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <div align="center">
+       <center>
+        <table border="0"
+               bgcolor="#C0C0C0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="left">
+            Here are two renderings of the famous Cornell Box. The top image
+            was rendered by the software (and possibly some hardware) at the
+            Cornell University Program of Computer Graphics. There seems to be
+            a small error in this image. Take a look at the bottom left corner
+            of the small box and you will see a light leak, which gives that
+            corner the illusion that it is floating.
+           </p>
+
+           <p align="left"
+              class="indent">
+            The bottom image was rendered with Blender 1.80. As you can see,
+            Blender's radiosity solution is very similar. There is a slight
+            shadow leak on the bottom left edge of the tall box, but there is
+            no light leak on the small box. I obtained the original Cornell Box
+            Data and tried to guess the rgb values from the reflectance
+            spectra. Anyone know the right way to do this? If the rgb color
+            values were more accurate, the images would be even more identical.
+           </p>
+
+           <p align="left"
+              class="indent">
+            This image was solved in about 30 minutes and rendered in 3 seconds
+            on a PII 450MHz. Please note that I let the radiosity calculation
+            run until it was finished. In case you want to render your own
+            tests, you can download the <a href=
+            "misc/cornell-box.zip">cornell-box.blend</a> scene file 21KB. The
+            following settings were used:
+           </p>
+           <br>
+
+           <div align="center">
+            <center>
+             <table border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    bgcolor="#808080">
+              <tr>
+               <td>
+                <div align="center">
+                 <center>
+                  <table border="0"
+                         cellpadding="9"
+                         cellspacing="1"
+                         bgcolor="#808080">
+                   <tr>
+                    <td bgcolor="#C0C0C0">
+                     <p align="left">
+                      PaMax: 250
+                     </p>
+                    </td>
+                    <td bgcolor="#C0C0C0">
+                     <p align="left">
+                      PaMin: 100
+                     </p>
+                    </td>
+                    <td bgcolor="#C0C0C0">
+                     <p align="left">
+                      Hemires: 1,000
+                     </p>
+                    </td>
+                   </tr>
+
+                   <tr>
+                    <td bgcolor="#C0C0C0">
+                     <p align="left">
+                      ElMax: 50
+                     </p>
+                    </td>
+                    <td bgcolor="#C0C0C0">
+                     <p align="left">
+                      ElMin: 10
+                     </p>
+                    </td>
+                    <td bgcolor="#C0C0C0">
+                     <p align="left">
+                      MaxEl: 20,000
+                     </p>
+                    </td>
+                   </tr>
+                  </table>
+                 </center>
+                </div>
+               </td>
+              </tr>
+             </table>
+            </center>
+           </div>
+           <br>
+
+           <p align="left">
+            <strong>Radiosity hints for Blender 1.8 users:</strong>
+           </p>
+
+           <ul>
+            <li>Quality and rendering time increase as the Patch and Element
+            variables approach their minimum values, and as the Hemires and
+            Maximum Elements variables approach their maximum values.
+            </li>
+
+            <li>You can divide the 'Radiosity solving time' by 6,000 to get the
+            time in minutes.
+            </li>
+           </ul>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+
+      <hr size="1"
+          width="500">
+
+      <div align="center">
+       <center>
+        <table border="0"
+               cellpadding="0"
+               cellspacing="0">
+         <tr>
+          <td width="500"
+              bgcolor="#C0C0C0">
+           <p align="center"
+              class="center">
+            This site was last revised on January 05, 2000<br>
+            Copyright &#169; 2000 Anthony D'Agostino<br>
+            All rights reserved.<br>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+               codebase=
+               "http://active.macromedia.com/flash4/cabs/swflash.cab#version=4,0,0,0"
+               id="spyder"
+               width="45"
+               height="26">
+             <param name="movie"
+                value="misc/spyder.swf">
+             <param name="quality"
+                value="high">
+             <param name="bgcolor"
+                value="#C0C0C0">
+             <embed name="spyder"
+                src="misc/spyder.swf"
+                quality="high"
+                bgcolor="#C0C0C0"
+                width="45"
+                height="26"
+                type="application/x-shockwave-flash"
+                pluginspage=
+                "http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+            </object>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </body>
+</html>
