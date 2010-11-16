@@ -216,7 +216,7 @@
             shell, the record definitions in wings.hrl must be loaded. This can
             be done effortlessly by utilizing the built-in
             <strong>read-record</strong> function: <span class=
-            "code">rr("c:/erlang/wings/src/wings.hrl").</span> Make sure the
+            "code">rr(wings).</span> Make sure the
             path matches the one on your system. This should be the result:
             <span class="code">[dlo,edge,st,view,we]</span>.
            </p>
@@ -267,11 +267,11 @@
               <tr>
                <td bgcolor="#D8D8D8">
                 <span class="code">f(),<br>
-                rr("c:/erlang/wings/src/wings.hrl"),<br>
+                rr(wings),<br>
                 St = wpa:get_state(),<br>
                 #st{shapes=Shapes,sel=Sel} = St,<br>
                 We = gb_trees:get(1, St#st.shapes),<br>
-                Vs = gb_trees:values(We#we.vp).<br></span>
+                Vs = array:sparse_to_list(We#we.vp).<br></span>
                </td>
               </tr>
              </table>
@@ -698,7 +698,7 @@
               <tr>
                <td bgcolor="#D8D8D8">
                 <span class="code">f(),<br>
-                rr("c:/erlang/wings/src/wings.hrl"),<br>
+                rr(wings),<br>
                 St = wpa:get_state(),<br>
                 #st{shapes=Shapes,selmode=Mode,sel=Sel} = St,<br>
                 [{Id,SelectedVs}] = Sel,<br>
@@ -739,7 +739,7 @@
               <tr>
                <td bgcolor="#D8D8D8">
                 <span class="code">f(),<br>
-                rr("c:/erlang/wings/src/wings.hrl"),<br>
+                rr(wings),<br>
                 St = wpa:get_state(),<br>
                 #st{shapes=Shapes,selmode=Mode,sel=Sel} = St,<br>
                 [{Id,SelectedFs}] = Sel,<br>
@@ -847,11 +847,11 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;lists:foreach(PrintFace, Faces),<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;file:close(IoDevice)<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;end,<br>
-                rr("c:/erlang/wings/src/wings.hrl"),<br>
+                rr(wings),<br>
                 St = wpa:get_state(),<br>
                 #st{shapes=Shapes} = St,<br>
                 We = gb_trees:get(1, St#st.shapes),<br>
-                Vs = gb_trees:values(We#we.vp),<br>
+                Vs = array:sparse_to_list(We#we.vp),<br>
                 Fs = gb_trees:keys(We#we.fs),<br>
                 Raw = [wings_face:vertex_positions(Face, We) || Face &lt;-
                 Fs],<br>
