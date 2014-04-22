@@ -32,6 +32,7 @@ p.title {
 	font-weight: bold;
 	color: #eeeeee;
 	text-align: center;
+    text-shadow: 1px 1px 1px #333;
 }
 
 p.center {
@@ -64,6 +65,14 @@ h3 {
 	font-family: Trebuchet MS, Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	line-height: 18px;
+	color: #222277;
+	text-align: left;
+}
+
+.codebr {
+	font-family: monospace, Courier;
+	font-size: 10px;
+	line-height: 15px;
 	color: #222277;
 	text-align: left;
 }
