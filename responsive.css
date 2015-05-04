@@ -1,0 +1,167 @@
+body {
+	color: #000000;
+	background-color: #aaaaaa;
+	max-width: 550px;
+	margin: 8px auto;
+	border: 1px solid black;
+}
+
+.page {
+	background-color: #c0c0c0;
+}
+
+p.menu {
+	font-size: 22px;
+	line-height: 32px;
+	font-weight: bold;
+	color: #ff8000;
+	text-align: center;
+	text-shadow: 1px 1px 1px #333;
+	padding: 11px;
+}
+
+p.title {
+	font-size: 17px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #eeeeee;
+	background-color: #88a0a4;
+	text-align: center;
+	text-shadow: 1px 1px 1px #333;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+p {
+	margin: 0px 25px;
+}
+
+p.indent {
+	text-indent: 1.5em;
+}
+
+p.center {
+	text-align: center;
+}
+
+
+hr {
+	height: 1px;
+	background-color: #999999;
+	border: 0 none;
+	max-width: 500px;
+}
+
+a:link	  { text-decoration: none; color: #0043C0; }
+a:visited { text-decoration: none; color: #c042c0; }
+a:hover   { color: red; background-color: yellow; }
+a:active  { color: #ff0000; }
+
+a:link.top	  { text-decoration: none; color: #888; -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')"; }
+a:visited.top { text-decoration: none; color: #888; }
+a:hover.top   { color: #f80; background-color: #c0c0c0;}
+a:active.top  { color: #fff; }
+
+span a:link    { color: black; }
+span a:visited { color: #808080; }
+span a:hover   { color: #ff6600; background-color: #c0c0c0; }
+
+table {
+	margin: 8px 25px;
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solid #999999;
+	padding: 10px;
+	width: 50%;
+}
+
+td p {
+	margin: 0px auto;
+}
+
+tr {
+	margin: 0px auto;
+}
+
+
+th, ul, ol, p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: justify;
+	margin-right: 25px;
+}
+
+
+span.highlight {
+	background-color: yellow;
+}
+
+h3 {
+	font-family: Trebuchet MS, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #555555;
+	margin-top: 0.7em;
+	margin-bottom: 0px;
+	margin-left:  25px;
+	margin-right: 25px;
+
+}
+
+p.code {
+	font-family: Trebuchet MS, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #222277;
+	text-align: left;
+	margin-left:  25px;
+	margin-right: 25px;
+	background-color: #D8D8D8;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+span.code {
+	font-family: Trebuchet MS, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #222277;
+}
+
+.codebr {
+	font-family: monospace, Courier;
+	font-size: 10px;
+	line-height: 15px;
+	color: #222277;
+	text-align: left;
+}
+
+p.output {
+	font-family: Trebuchet MS, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #772222;
+	margin-left:  25px;
+	margin-right: 25px;
+	background-color: #D8D8D8;
+	border: 1px solid black;
+	padding: 5px;
+
+}
+
+.prompt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Courier New", monospace;
+	font-size: 12px;
+	line-height: 18px;
+	color: #008000;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 550px) {
+  body { margin: 0px; }
+}
+
