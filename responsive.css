@@ -3,11 +3,12 @@ body {
 	background-color: #aaaaaa;
 	max-width: 550px;
 	margin: 8px auto;
-	border: 1px solid black;
 }
 
 .page {
 	background-color: #c0c0c0;
+	box-shadow: 0 0 4px #333;
+	border-radius: 5px;
 }
 
 p.menu {
@@ -57,7 +58,7 @@ a:visited { text-decoration: none; color: #c042c0; }
 a:hover   { color: red; background-color: yellow; }
 a:active  { color: #ff0000; }
 
-a:link.top	  { text-decoration: none; color: #888; -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')"; }
+a:link.top	  { text-decoration: none; color: #888; }
 a:visited.top { text-decoration: none; color: #888; }
 a:hover.top   { color: #f80; background-color: #c0c0c0;}
 a:active.top  { color: #fff; }
