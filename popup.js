@@ -68,7 +68,7 @@ function setupRollover(thisImage) {
 	thisImage.onmouseout = rollOut;
 
 	thisImage.overImage = new Image();
-	thisImage.overImage.src = "thumb/_zoom.gif";
+	thisImage.overImage.src = "thumb/zoom.gif";
 	thisImage.onmouseover = rollOver;
 }
 
